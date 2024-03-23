@@ -22,9 +22,19 @@ class AuthCubit extends Cubit<AuthState> {
         message: "Get into: Username*, Password*",
       ));
     } else {
-      User user = User(name: username, password: password);
-      final id = await db.state?.userDao.insertUser(user);
-      user = User(name: username, password: password, id: id);
+      List<User>? users = await db.state?.userDao.readAll();
+      final user = users?.firstWhere((element) => element.name == username,
+          orElse: () => User(name: '', password: ''));
+      if ((user?.name.isNotEmpty ?? false) &&
+          (user?.password.isNotEmpty ?? false)) {
+        emit(state.copyWith(error: true, message: "Existing User"));
+        return;
+      } else {
+        User user = User(name: username, password: password);
+        final id = await db.state?.userDao.insertUser(user);
+        user = User(name: username, password: password, id: id);
+        emit(state.copyWith(error: true, message: "Created User"));
+      }
     }
   }
 
