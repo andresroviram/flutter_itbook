@@ -71,67 +71,50 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         emit(state.copyWith(failure: failure, isLoading: false, isDone: false));
       case Right(value: List<BookEntity> books):
         emit(state.copyWith(books: []));
-        emit(state.copyWith(books: books, isLoading: false, isDone: false));
+        emit(state.copyWith(
+          books: books,
+          isLoading: false,
+          isDone: false,
+          searchBooks: [],
+        ));
     }
   }
 
   Future<void> _getBookSerch(
       _GetBookSearh event, Emitter<HomeState> emit) async {
-    offset++;
+    final historyList = state.historyList.toList();
 
-    // final historyList = state.historyList.toList();
+    final isExist = historyList.contains(event.search);
 
-    // final isExist = historyList
-    //     .firstWhere((element) => element == event.search)
-    //     .contains(event.search);
-
-    // if (!isExist) {
-    //   if (state.historyList.length <= 5) {
-    //     historyList.add(event.search);
-    //   } else {
-    //     historyList.add(event.search);
-    //     historyList.removeAt(0);
-    //   }
-    // }
-
-    // if (!isExist && state.historyList.length >= 5) {
-    //   state.historyList[0] = event.search;
-    // } else {
-    //   if (!isExist || state.historyList.length <= 5) {
-    //     historyList.add(event.search);
-    //   }
-    // }
+    if (!isExist) {
+      if (state.historyList.length <= 5) {
+        historyList.add(event.search);
+      } else {
+        historyList.add(event.search);
+        historyList.removeAt(0);
+      }
+    }
 
     emit(state.copyWith(
-      isLoading: true, /* historyList: historyList */
+      isLoading: true,
+      historyList: historyList,
     ));
+
     final either = await _homeUseCase.getBookSearch(event.search);
     switch (either) {
       case Left(value: Failure failure):
         emit(state.copyWith(failure: failure, isLoading: false));
       case Right(value: List<BookEntity> books):
-        // emit(state.copyWith(books: []));
-        debugPrint('searchBooks: ${books.length}');
         emit(state.copyWith(searchBooks: books, isLoading: false));
     }
   }
 
   Future<void> _search(_Search event, Emitter<HomeState> emit) async {
-    emit(state.copyWith(isLoading: true));
-
-    debouncer.execute(() async {
-      if (event.search == '') {
-        emit(state.copyWith(
-          searchBooks: [],
-          isLoading: false,
-        ));
-      } else {
+    debouncer.execute(() {
+      if (event.search.isNotEmpty) {
         add(_GetBookSearh(search: event.search));
-        // final filter = state.books
-        //     .where((element) =>
-        //         element.name!.toLowerCase().contains(event.search!.toLowerCase()))
-        //     .toList();
-        // emit(state.copyWith(books: filter, isLoading: false));
+      } else {
+        add(const _GetBookNew());
       }
     });
   }
@@ -140,7 +123,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 class Debouncer {
   Timer? timer;
 
-  Future<void> execute(VoidCallback action) async {
+  void execute(VoidCallback action) {
     timer?.cancel();
     timer = Timer(const Duration(milliseconds: 500), action);
   }
