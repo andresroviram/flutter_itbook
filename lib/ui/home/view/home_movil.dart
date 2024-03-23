@@ -112,15 +112,15 @@ class _HomeMovilState extends State<HomeMovil> {
                         viewConstraints: BoxConstraints(
                           maxWidth: constraints.maxWidth,
                           minHeight: constraints.minHeight,
-                          maxHeight: constraints.maxHeight / 2.4,
+                          maxHeight: constraints.maxHeight,
                         ),
                       ),
                     ),
                     if (state.searchBooks.isNotEmpty) ...[
-                      const Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 20),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 20),
                         child: Text(
-                          'Search',
+                          'Search: ${searchController.text}',
                           textAlign: TextAlign.left,
                         ),
                       ),
