@@ -78,7 +78,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   Future<void> _getBookSerch(
       _GetBookSearh event, Emitter<HomeState> emit) async {
     offset++;
-    debugPrint(event.search);
 
     // final historyList = state.historyList.toList();
 
@@ -119,8 +118,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   Future<void> _search(_Search event, Emitter<HomeState> emit) async {
     emit(state.copyWith(isLoading: true));
-
-    debugPrint('searchhh:${event.search}');
 
     debouncer.execute(() async {
       if (event.search == '') {

@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/common/utils/helpers.dart';
+import '../../navigation/cubit/home_navigation.dart';
 import '../bloc/home/home_bloc.dart';
 import '../widget/book_list_view.dart';
+import 'detail_view.dart';
 // import '../widget/search_bar.dart';
 
 class HomeMovil extends StatefulWidget {
@@ -91,9 +93,9 @@ class _HomeMovilState extends State<HomeMovil> {
                             // ],
                           );
                         },
-                        suggestionsBuilder: (BuildContext context,
-                            SearchController controller) {
-                          return state.searchBooks.isEmpty
+                        suggestionsBuilder:
+                            (BuildContext _, SearchController controller) {
+                          return state.searchBooks.isEmpty || state.isLoading
                               ? state.historyList.map(
                                   (e) {
                                     return ListTile(
@@ -112,7 +114,18 @@ class _HomeMovilState extends State<HomeMovil> {
                                     final book = state.searchBooks[index];
                                     return ListTile(
                                       title: Text(book.title ?? ''),
-                                      onTap: () {},
+                                      onTap: () {
+                                        setState(() {
+                                          controller.closeView(book.title);
+                                        });
+                                        context
+                                            .read<HomeNavigation>()
+                                            .navigateCatDetails(
+                                              DetailView.path,
+                                              isbn13: book.isbn13,
+                                              heroTag: 'book',
+                                            );
+                                      },
                                     );
                                   },
                                 );
