@@ -83,21 +83,24 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   Future<void> _getBookSerch(
       _GetBookSearh event, Emitter<HomeState> emit) async {
     final historyList = state.historyList.toList();
+    final newList = <String>[];
 
     final isExist = historyList.contains(event.search);
 
     if (!isExist) {
-      if (state.historyList.length <= 5) {
-        historyList.add(event.search);
+      if (state.historyList.length < 5) {
+        newList.insert(0, event.search);
+        newList.addAll(historyList);
       } else {
-        historyList.add(event.search);
-        historyList.removeAt(0);
+        newList.insert(0, event.search);
+        historyList.removeLast();
+        newList.addAll(historyList);
       }
     }
 
     emit(state.copyWith(
       isLoading: true,
-      historyList: historyList,
+      historyList: newList,
     ));
 
     final either = await _homeUseCase.getBookSearch(event.search);
