@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/common/database/database_manager.dart';
+import '../../core/common/services/local_storage.dart';
+import '../../injectable_dependency.dart';
 import '../home/view/home_view.dart';
 import '../navigation/cubit/router_manager.dart';
 import 'cubit/auth_cubit.dart';
@@ -16,6 +18,7 @@ class LoginView extends StatefulWidget {
         lazy: false,
         create: (context) => AuthCubit(
           db: context.read<DatabaseManager>(),
+          localStorage: getIt<LocalStorage>(),
         ),
         child: const LoginView(),
       );
@@ -26,13 +29,19 @@ class LoginView extends StatefulWidget {
 
 class _LoginViewState extends State<LoginView> {
   late AuthCubit _authCubit;
-  final _usernameController = TextEditingController(text: 'test');
-  final _passwordController = TextEditingController(text: '123456');
+  final _usernameController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     _authCubit = context.read<AuthCubit>();
+    getRemember();
+  }
+
+  Future<void> getRemember() async {
+    _usernameController.text = await _authCubit.getUserName();
+    _passwordController.text = await _authCubit.getPassword();
   }
 
   void _fingerprintLogin() {

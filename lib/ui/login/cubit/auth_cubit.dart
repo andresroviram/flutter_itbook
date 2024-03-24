@@ -2,17 +2,32 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../core/common/database/database_manager.dart';
+import '../../../core/common/services/local_storage.dart';
 import '../../../core/home/data/models/user.dart';
 
 part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  AuthCubit({required this.db}) : super(const _Initial());
   late DatabaseManager db;
+  final LocalStorage _localStorage;
+
+  AuthCubit({
+    required this.db,
+    required LocalStorage localStorage,
+  })  : _localStorage = localStorage,
+        super(const _Initial());
 
   void invalidate() {
     emit(state.copyWith(error: false));
+  }
+
+  Future<String> getUserName() async {
+    return await _localStorage.getUserLoginUserName();
+  }
+
+  Future<String> getPassword() async {
+    return await _localStorage.getUserLoginPass();
   }
 
   Future<void> createUser(String username, String password) async {
@@ -54,6 +69,8 @@ class AuthCubit extends Cubit<AuthState> {
       return;
     }
     if (user?.password == password) {
+      _localStorage.saveUserLoginUserName(username);
+      _localStorage.saveUserLoginPass(password);
       emit(state.copyWith(success: true));
     } else {
       emit(state.copyWith(error: true, message: "Invalid credentials"));
