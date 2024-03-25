@@ -42,6 +42,13 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
         vertical: 20,
       ),
       child: SearchAnchor(
+        viewBackgroundColor: Theme.of(context).colorScheme.background,
+        viewShape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(10),
+            bottomRight: Radius.circular(10),
+          ),
+        ),
         searchController: searchController,
         viewLeading: IconButton(
           onPressed: () {
