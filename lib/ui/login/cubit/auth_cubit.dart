@@ -9,13 +9,14 @@ part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  late DatabaseManager db;
+  late DatabaseManager _localDatabase;
   final LocalStorage _localStorage;
 
   AuthCubit({
-    required this.db,
+    required DatabaseManager localDatabase,
     required LocalStorage localStorage,
   })  : _localStorage = localStorage,
+        _localDatabase = localDatabase,
         super(const _Initial());
 
   void invalidate() {
@@ -37,7 +38,7 @@ class AuthCubit extends Cubit<AuthState> {
         message: "Get into: Username*, Password*",
       ));
     } else {
-      List<User>? users = await db.state?.userDao.readAll();
+      List<User>? users = await _localDatabase.state?.userDao.readAll();
       final user = users?.firstWhere((element) => element.name == username,
           orElse: () => User(name: '', password: ''));
       if ((user?.name.isNotEmpty ?? false) &&
@@ -46,7 +47,7 @@ class AuthCubit extends Cubit<AuthState> {
         return;
       } else {
         User user = User(name: username, password: password);
-        final id = await db.state?.userDao.insertUser(user);
+        final id = await _localDatabase.state?.userDao.insertUser(user);
         user = User(name: username, password: password, id: id);
         emit(state.copyWith(error: true, message: "Created User"));
       }
@@ -61,7 +62,7 @@ class AuthCubit extends Cubit<AuthState> {
       ));
       return;
     }
-    List<User>? users = await db.state?.userDao.readAll();
+    List<User>? users = await _localDatabase.state?.userDao.readAll();
     final user = users?.firstWhere((element) => element.name == username,
         orElse: () => User(name: '', password: ''));
     if ((user?.name.isEmpty ?? false) && (user?.password.isEmpty ?? false)) {

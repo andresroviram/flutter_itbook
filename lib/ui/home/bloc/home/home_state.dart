@@ -9,5 +9,6 @@ class HomeState with _$HomeState {
     @Default([]) List<BookEntity> books,
     @Default([]) List<BookEntity> searchBooks,
     @Default([]) List<String> historyList,
+    @Default('') String searchResult,
   }) = _Initial;
 }

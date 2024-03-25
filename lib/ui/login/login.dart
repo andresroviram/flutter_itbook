@@ -17,7 +17,7 @@ class LoginView extends StatefulWidget {
   static Widget create() => BlocProvider(
         lazy: false,
         create: (context) => AuthCubit(
-          db: context.read<DatabaseManager>(),
+          localDatabase: context.read<DatabaseManager>(),
           localStorage: getIt<LocalStorage>(),
         ),
         child: const LoginView(),
@@ -36,10 +36,10 @@ class _LoginViewState extends State<LoginView> {
   void initState() {
     super.initState();
     _authCubit = context.read<AuthCubit>();
-    getRemember();
+    getUser();
   }
 
-  Future<void> getRemember() async {
+  Future<void> getUser() async {
     _usernameController.text = await _authCubit.getUserName();
     _passwordController.text = await _authCubit.getPassword();
   }
@@ -152,7 +152,7 @@ class _LoginViewState extends State<LoginView> {
                     const SizedBox(height: 20),
                     IconButton(
                       icon: const Icon(Icons.fingerprint, size: 50),
-                      onPressed: () => _fingerprintLogin(),
+                      onPressed: _fingerprintLogin,
                     ),
                   ],
                 ),

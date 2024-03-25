@@ -18,7 +18,7 @@ class BookListView extends StatelessWidget {
     final isDone = context.watch<HomeBloc>().state.isDone;
     final scrollController = context.watch<HomeBloc>().scrollController;
     return RefreshIndicator(
-      onRefresh: () => context.read<HomeBloc>().refreshList(),
+      onRefresh: context.read<HomeBloc>().refreshList,
       child: ListView.separated(
         controller: scrollController,
         shrinkWrap: true,

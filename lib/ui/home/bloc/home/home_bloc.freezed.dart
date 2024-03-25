@@ -1723,6 +1723,7 @@ mixin _$HomeState {
   List<BookEntity> get books => throw _privateConstructorUsedError;
   List<BookEntity> get searchBooks => throw _privateConstructorUsedError;
   List<String> get historyList => throw _privateConstructorUsedError;
+  String get searchResult => throw _privateConstructorUsedError;
 
   @JsonKey(ignore: true)
   $HomeStateCopyWith<HomeState> get copyWith =>
@@ -1740,7 +1741,8 @@ abstract class $HomeStateCopyWith<$Res> {
       bool isDone,
       List<BookEntity> books,
       List<BookEntity> searchBooks,
-      List<String> historyList});
+      List<String> historyList,
+      String searchResult});
 }
 
 /// @nodoc
@@ -1762,6 +1764,7 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
     Object? books = null,
     Object? searchBooks = null,
     Object? historyList = null,
+    Object? searchResult = null,
   }) {
     return _then(_value.copyWith(
       failure: freezed == failure
@@ -1788,6 +1791,10 @@ class _$HomeStateCopyWithImpl<$Res, $Val extends HomeState>
           ? _value.historyList
           : historyList // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      searchResult: null == searchResult
+          ? _value.searchResult
+          : searchResult // ignore: cast_nullable_to_non_nullable
+              as String,
     ) as $Val);
   }
 }
@@ -1806,7 +1813,8 @@ abstract class _$$InitialImplCopyWith<$Res>
       bool isDone,
       List<BookEntity> books,
       List<BookEntity> searchBooks,
-      List<String> historyList});
+      List<String> historyList,
+      String searchResult});
 }
 
 /// @nodoc
@@ -1826,6 +1834,7 @@ class __$$InitialImplCopyWithImpl<$Res>
     Object? books = null,
     Object? searchBooks = null,
     Object? historyList = null,
+    Object? searchResult = null,
   }) {
     return _then(_$InitialImpl(
       failure: freezed == failure
@@ -1852,6 +1861,10 @@ class __$$InitialImplCopyWithImpl<$Res>
           ? _value._historyList
           : historyList // ignore: cast_nullable_to_non_nullable
               as List<String>,
+      searchResult: null == searchResult
+          ? _value.searchResult
+          : searchResult // ignore: cast_nullable_to_non_nullable
+              as String,
     ));
   }
 }
@@ -1865,7 +1878,8 @@ class _$InitialImpl implements _Initial {
       this.isDone = false,
       final List<BookEntity> books = const [],
       final List<BookEntity> searchBooks = const [],
-      final List<String> historyList = const []})
+      final List<String> historyList = const [],
+      this.searchResult = ''})
       : _books = books,
         _searchBooks = searchBooks,
         _historyList = historyList;
@@ -1906,8 +1920,12 @@ class _$InitialImpl implements _Initial {
   }
 
   @override
+  @JsonKey()
+  final String searchResult;
+
+  @override
   String toString() {
-    return 'HomeState(failure: $failure, isLoading: $isLoading, isDone: $isDone, books: $books, searchBooks: $searchBooks, historyList: $historyList)';
+    return 'HomeState(failure: $failure, isLoading: $isLoading, isDone: $isDone, books: $books, searchBooks: $searchBooks, historyList: $historyList, searchResult: $searchResult)';
   }
 
   @override
@@ -1923,7 +1941,9 @@ class _$InitialImpl implements _Initial {
             const DeepCollectionEquality()
                 .equals(other._searchBooks, _searchBooks) &&
             const DeepCollectionEquality()
-                .equals(other._historyList, _historyList));
+                .equals(other._historyList, _historyList) &&
+            (identical(other.searchResult, searchResult) ||
+                other.searchResult == searchResult));
   }
 
   @override
@@ -1934,7 +1954,8 @@ class _$InitialImpl implements _Initial {
       isDone,
       const DeepCollectionEquality().hash(_books),
       const DeepCollectionEquality().hash(_searchBooks),
-      const DeepCollectionEquality().hash(_historyList));
+      const DeepCollectionEquality().hash(_historyList),
+      searchResult);
 
   @JsonKey(ignore: true)
   @override
@@ -1950,7 +1971,8 @@ abstract class _Initial implements HomeState {
       final bool isDone,
       final List<BookEntity> books,
       final List<BookEntity> searchBooks,
-      final List<String> historyList}) = _$InitialImpl;
+      final List<String> historyList,
+      final String searchResult}) = _$InitialImpl;
 
   @override
   Failure? get failure;
@@ -1964,6 +1986,8 @@ abstract class _Initial implements HomeState {
   List<BookEntity> get searchBooks;
   @override
   List<String> get historyList;
+  @override
+  String get searchResult;
   @override
   @JsonKey(ignore: true)
   _$$InitialImplCopyWith<_$InitialImpl> get copyWith =>

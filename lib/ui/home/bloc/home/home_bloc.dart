@@ -42,6 +42,10 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   int limit = 20;
   int offset = 0;
 
+  void _invalidate(_Invalidate event, Emitter<HomeState> emit) {
+    emit(state.copyWith(failure: null));
+  }
+
   Future<void> refreshList() async {
     add(const _RefreshBooks());
   }
@@ -57,10 +61,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   Future<void> _refreshBooks(
       _RefreshBooks event, Emitter<HomeState> emit) async {
     add(const _GetBookNew());
-  }
-
-  void _invalidate(_Invalidate event, Emitter<HomeState> emit) {
-    emit(state.copyWith(failure: null));
   }
 
   void _initScrollController(
@@ -133,7 +133,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
       case Left(value: Failure failure):
         emit(state.copyWith(failure: failure, isLoading: false));
       case Right(value: List<BookEntity> books):
-        emit(state.copyWith(searchBooks: books, isLoading: false));
+        emit(state.copyWith(
+          searchBooks: books,
+          isLoading: false,
+          searchResult: event.search,
+        ));
     }
   }
 
