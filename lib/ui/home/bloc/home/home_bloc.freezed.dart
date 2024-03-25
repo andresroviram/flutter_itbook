@@ -22,12 +22,11 @@ mixin _$HomeEvent {
     required TResult Function() init,
     required TResult Function(String search) search,
     required TResult Function(String history) removeHistory,
-    required TResult Function() getBookNew,
+    required TResult Function(bool isDone, bool isLoading) getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
     required TResult Function() refreshBooks,
     required TResult Function() invalidate,
-    required TResult Function() initScrollController,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -36,12 +35,11 @@ mixin _$HomeEvent {
     TResult? Function()? init,
     TResult? Function(String search)? search,
     TResult? Function(String history)? removeHistory,
-    TResult? Function()? getBookNew,
+    TResult? Function(bool isDone, bool isLoading)? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
     TResult? Function()? refreshBooks,
     TResult? Function()? invalidate,
-    TResult? Function()? initScrollController,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -50,12 +48,11 @@ mixin _$HomeEvent {
     TResult Function()? init,
     TResult Function(String search)? search,
     TResult Function(String history)? removeHistory,
-    TResult Function()? getBookNew,
+    TResult Function(bool isDone, bool isLoading)? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
     TResult Function()? refreshBooks,
     TResult Function()? invalidate,
-    TResult Function()? initScrollController,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -70,7 +67,6 @@ mixin _$HomeEvent {
     required TResult Function(_GetImagePokemon value) getImagePokemon,
     required TResult Function(_RefreshBooks value) refreshBooks,
     required TResult Function(_Invalidate value) invalidate,
-    required TResult Function(_GetScrollController value) initScrollController,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -84,7 +80,6 @@ mixin _$HomeEvent {
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
     TResult? Function(_RefreshBooks value)? refreshBooks,
     TResult? Function(_Invalidate value)? invalidate,
-    TResult? Function(_GetScrollController value)? initScrollController,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -98,7 +93,6 @@ mixin _$HomeEvent {
     TResult Function(_GetImagePokemon value)? getImagePokemon,
     TResult Function(_RefreshBooks value)? refreshBooks,
     TResult Function(_Invalidate value)? invalidate,
-    TResult Function(_GetScrollController value)? initScrollController,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -163,12 +157,11 @@ class _$StartedImpl implements _Started {
     required TResult Function() init,
     required TResult Function(String search) search,
     required TResult Function(String history) removeHistory,
-    required TResult Function() getBookNew,
+    required TResult Function(bool isDone, bool isLoading) getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
     required TResult Function() refreshBooks,
     required TResult Function() invalidate,
-    required TResult Function() initScrollController,
   }) {
     return started();
   }
@@ -180,12 +173,11 @@ class _$StartedImpl implements _Started {
     TResult? Function()? init,
     TResult? Function(String search)? search,
     TResult? Function(String history)? removeHistory,
-    TResult? Function()? getBookNew,
+    TResult? Function(bool isDone, bool isLoading)? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
     TResult? Function()? refreshBooks,
     TResult? Function()? invalidate,
-    TResult? Function()? initScrollController,
   }) {
     return started?.call();
   }
@@ -197,12 +189,11 @@ class _$StartedImpl implements _Started {
     TResult Function()? init,
     TResult Function(String search)? search,
     TResult Function(String history)? removeHistory,
-    TResult Function()? getBookNew,
+    TResult Function(bool isDone, bool isLoading)? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
     TResult Function()? refreshBooks,
     TResult Function()? invalidate,
-    TResult Function()? initScrollController,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -223,7 +214,6 @@ class _$StartedImpl implements _Started {
     required TResult Function(_GetImagePokemon value) getImagePokemon,
     required TResult Function(_RefreshBooks value) refreshBooks,
     required TResult Function(_Invalidate value) invalidate,
-    required TResult Function(_GetScrollController value) initScrollController,
   }) {
     return started(this);
   }
@@ -240,7 +230,6 @@ class _$StartedImpl implements _Started {
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
     TResult? Function(_RefreshBooks value)? refreshBooks,
     TResult? Function(_Invalidate value)? invalidate,
-    TResult? Function(_GetScrollController value)? initScrollController,
   }) {
     return started?.call(this);
   }
@@ -257,7 +246,6 @@ class _$StartedImpl implements _Started {
     TResult Function(_GetImagePokemon value)? getImagePokemon,
     TResult Function(_RefreshBooks value)? refreshBooks,
     TResult Function(_Invalidate value)? invalidate,
-    TResult Function(_GetScrollController value)? initScrollController,
     required TResult orElse(),
   }) {
     if (started != null) {
@@ -312,12 +300,11 @@ class _$InitImpl implements _Init {
     required TResult Function() init,
     required TResult Function(String search) search,
     required TResult Function(String history) removeHistory,
-    required TResult Function() getBookNew,
+    required TResult Function(bool isDone, bool isLoading) getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
     required TResult Function() refreshBooks,
     required TResult Function() invalidate,
-    required TResult Function() initScrollController,
   }) {
     return init();
   }
@@ -329,12 +316,11 @@ class _$InitImpl implements _Init {
     TResult? Function()? init,
     TResult? Function(String search)? search,
     TResult? Function(String history)? removeHistory,
-    TResult? Function()? getBookNew,
+    TResult? Function(bool isDone, bool isLoading)? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
     TResult? Function()? refreshBooks,
     TResult? Function()? invalidate,
-    TResult? Function()? initScrollController,
   }) {
     return init?.call();
   }
@@ -346,12 +332,11 @@ class _$InitImpl implements _Init {
     TResult Function()? init,
     TResult Function(String search)? search,
     TResult Function(String history)? removeHistory,
-    TResult Function()? getBookNew,
+    TResult Function(bool isDone, bool isLoading)? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
     TResult Function()? refreshBooks,
     TResult Function()? invalidate,
-    TResult Function()? initScrollController,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -372,7 +357,6 @@ class _$InitImpl implements _Init {
     required TResult Function(_GetImagePokemon value) getImagePokemon,
     required TResult Function(_RefreshBooks value) refreshBooks,
     required TResult Function(_Invalidate value) invalidate,
-    required TResult Function(_GetScrollController value) initScrollController,
   }) {
     return init(this);
   }
@@ -389,7 +373,6 @@ class _$InitImpl implements _Init {
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
     TResult? Function(_RefreshBooks value)? refreshBooks,
     TResult? Function(_Invalidate value)? invalidate,
-    TResult? Function(_GetScrollController value)? initScrollController,
   }) {
     return init?.call(this);
   }
@@ -406,7 +389,6 @@ class _$InitImpl implements _Init {
     TResult Function(_GetImagePokemon value)? getImagePokemon,
     TResult Function(_RefreshBooks value)? refreshBooks,
     TResult Function(_Invalidate value)? invalidate,
-    TResult Function(_GetScrollController value)? initScrollController,
     required TResult orElse(),
   }) {
     if (init != null) {
@@ -488,12 +470,11 @@ class _$SearchImpl implements _Search {
     required TResult Function() init,
     required TResult Function(String search) search,
     required TResult Function(String history) removeHistory,
-    required TResult Function() getBookNew,
+    required TResult Function(bool isDone, bool isLoading) getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
     required TResult Function() refreshBooks,
     required TResult Function() invalidate,
-    required TResult Function() initScrollController,
   }) {
     return search(this.search);
   }
@@ -505,12 +486,11 @@ class _$SearchImpl implements _Search {
     TResult? Function()? init,
     TResult? Function(String search)? search,
     TResult? Function(String history)? removeHistory,
-    TResult? Function()? getBookNew,
+    TResult? Function(bool isDone, bool isLoading)? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
     TResult? Function()? refreshBooks,
     TResult? Function()? invalidate,
-    TResult? Function()? initScrollController,
   }) {
     return search?.call(this.search);
   }
@@ -522,12 +502,11 @@ class _$SearchImpl implements _Search {
     TResult Function()? init,
     TResult Function(String search)? search,
     TResult Function(String history)? removeHistory,
-    TResult Function()? getBookNew,
+    TResult Function(bool isDone, bool isLoading)? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
     TResult Function()? refreshBooks,
     TResult Function()? invalidate,
-    TResult Function()? initScrollController,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -548,7 +527,6 @@ class _$SearchImpl implements _Search {
     required TResult Function(_GetImagePokemon value) getImagePokemon,
     required TResult Function(_RefreshBooks value) refreshBooks,
     required TResult Function(_Invalidate value) invalidate,
-    required TResult Function(_GetScrollController value) initScrollController,
   }) {
     return search(this);
   }
@@ -565,7 +543,6 @@ class _$SearchImpl implements _Search {
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
     TResult? Function(_RefreshBooks value)? refreshBooks,
     TResult? Function(_Invalidate value)? invalidate,
-    TResult? Function(_GetScrollController value)? initScrollController,
   }) {
     return search?.call(this);
   }
@@ -582,7 +559,6 @@ class _$SearchImpl implements _Search {
     TResult Function(_GetImagePokemon value)? getImagePokemon,
     TResult Function(_RefreshBooks value)? refreshBooks,
     TResult Function(_Invalidate value)? invalidate,
-    TResult Function(_GetScrollController value)? initScrollController,
     required TResult orElse(),
   }) {
     if (search != null) {
@@ -669,12 +645,11 @@ class _$RemoveHistoryImpl implements _RemoveHistory {
     required TResult Function() init,
     required TResult Function(String search) search,
     required TResult Function(String history) removeHistory,
-    required TResult Function() getBookNew,
+    required TResult Function(bool isDone, bool isLoading) getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
     required TResult Function() refreshBooks,
     required TResult Function() invalidate,
-    required TResult Function() initScrollController,
   }) {
     return removeHistory(history);
   }
@@ -686,12 +661,11 @@ class _$RemoveHistoryImpl implements _RemoveHistory {
     TResult? Function()? init,
     TResult? Function(String search)? search,
     TResult? Function(String history)? removeHistory,
-    TResult? Function()? getBookNew,
+    TResult? Function(bool isDone, bool isLoading)? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
     TResult? Function()? refreshBooks,
     TResult? Function()? invalidate,
-    TResult? Function()? initScrollController,
   }) {
     return removeHistory?.call(history);
   }
@@ -703,12 +677,11 @@ class _$RemoveHistoryImpl implements _RemoveHistory {
     TResult Function()? init,
     TResult Function(String search)? search,
     TResult Function(String history)? removeHistory,
-    TResult Function()? getBookNew,
+    TResult Function(bool isDone, bool isLoading)? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
     TResult Function()? refreshBooks,
     TResult Function()? invalidate,
-    TResult Function()? initScrollController,
     required TResult orElse(),
   }) {
     if (removeHistory != null) {
@@ -729,7 +702,6 @@ class _$RemoveHistoryImpl implements _RemoveHistory {
     required TResult Function(_GetImagePokemon value) getImagePokemon,
     required TResult Function(_RefreshBooks value) refreshBooks,
     required TResult Function(_Invalidate value) invalidate,
-    required TResult Function(_GetScrollController value) initScrollController,
   }) {
     return removeHistory(this);
   }
@@ -746,7 +718,6 @@ class _$RemoveHistoryImpl implements _RemoveHistory {
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
     TResult? Function(_RefreshBooks value)? refreshBooks,
     TResult? Function(_Invalidate value)? invalidate,
-    TResult? Function(_GetScrollController value)? initScrollController,
   }) {
     return removeHistory?.call(this);
   }
@@ -763,7 +734,6 @@ class _$RemoveHistoryImpl implements _RemoveHistory {
     TResult Function(_GetImagePokemon value)? getImagePokemon,
     TResult Function(_RefreshBooks value)? refreshBooks,
     TResult Function(_Invalidate value)? invalidate,
-    TResult Function(_GetScrollController value)? initScrollController,
     required TResult orElse(),
   }) {
     if (removeHistory != null) {
@@ -787,6 +757,8 @@ abstract class _$$GetBookNewImplCopyWith<$Res> {
   factory _$$GetBookNewImplCopyWith(
           _$GetBookNewImpl value, $Res Function(_$GetBookNewImpl) then) =
       __$$GetBookNewImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({bool isDone, bool isLoading});
 }
 
 /// @nodoc
@@ -796,26 +768,61 @@ class __$$GetBookNewImplCopyWithImpl<$Res>
   __$$GetBookNewImplCopyWithImpl(
       _$GetBookNewImpl _value, $Res Function(_$GetBookNewImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isDone = null,
+    Object? isLoading = null,
+  }) {
+    return _then(_$GetBookNewImpl(
+      isDone: null == isDone
+          ? _value.isDone
+          : isDone // ignore: cast_nullable_to_non_nullable
+              as bool,
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+    ));
+  }
 }
 
 /// @nodoc
 
 class _$GetBookNewImpl implements _GetBookNew {
-  const _$GetBookNewImpl();
+  const _$GetBookNewImpl({this.isDone = false, this.isLoading = true});
+
+  @override
+  @JsonKey()
+  final bool isDone;
+  @override
+  @JsonKey()
+  final bool isLoading;
 
   @override
   String toString() {
-    return 'HomeEvent.getBookNew()';
+    return 'HomeEvent.getBookNew(isDone: $isDone, isLoading: $isLoading)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$GetBookNewImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$GetBookNewImpl &&
+            (identical(other.isDone, isDone) || other.isDone == isDone) &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, isDone, isLoading);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$GetBookNewImplCopyWith<_$GetBookNewImpl> get copyWith =>
+      __$$GetBookNewImplCopyWithImpl<_$GetBookNewImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -824,14 +831,13 @@ class _$GetBookNewImpl implements _GetBookNew {
     required TResult Function() init,
     required TResult Function(String search) search,
     required TResult Function(String history) removeHistory,
-    required TResult Function() getBookNew,
+    required TResult Function(bool isDone, bool isLoading) getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
     required TResult Function() refreshBooks,
     required TResult Function() invalidate,
-    required TResult Function() initScrollController,
   }) {
-    return getBookNew();
+    return getBookNew(isDone, isLoading);
   }
 
   @override
@@ -841,14 +847,13 @@ class _$GetBookNewImpl implements _GetBookNew {
     TResult? Function()? init,
     TResult? Function(String search)? search,
     TResult? Function(String history)? removeHistory,
-    TResult? Function()? getBookNew,
+    TResult? Function(bool isDone, bool isLoading)? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
     TResult? Function()? refreshBooks,
     TResult? Function()? invalidate,
-    TResult? Function()? initScrollController,
   }) {
-    return getBookNew?.call();
+    return getBookNew?.call(isDone, isLoading);
   }
 
   @override
@@ -858,16 +863,15 @@ class _$GetBookNewImpl implements _GetBookNew {
     TResult Function()? init,
     TResult Function(String search)? search,
     TResult Function(String history)? removeHistory,
-    TResult Function()? getBookNew,
+    TResult Function(bool isDone, bool isLoading)? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
     TResult Function()? refreshBooks,
     TResult Function()? invalidate,
-    TResult Function()? initScrollController,
     required TResult orElse(),
   }) {
     if (getBookNew != null) {
-      return getBookNew();
+      return getBookNew(isDone, isLoading);
     }
     return orElse();
   }
@@ -884,7 +888,6 @@ class _$GetBookNewImpl implements _GetBookNew {
     required TResult Function(_GetImagePokemon value) getImagePokemon,
     required TResult Function(_RefreshBooks value) refreshBooks,
     required TResult Function(_Invalidate value) invalidate,
-    required TResult Function(_GetScrollController value) initScrollController,
   }) {
     return getBookNew(this);
   }
@@ -901,7 +904,6 @@ class _$GetBookNewImpl implements _GetBookNew {
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
     TResult? Function(_RefreshBooks value)? refreshBooks,
     TResult? Function(_Invalidate value)? invalidate,
-    TResult? Function(_GetScrollController value)? initScrollController,
   }) {
     return getBookNew?.call(this);
   }
@@ -918,7 +920,6 @@ class _$GetBookNewImpl implements _GetBookNew {
     TResult Function(_GetImagePokemon value)? getImagePokemon,
     TResult Function(_RefreshBooks value)? refreshBooks,
     TResult Function(_Invalidate value)? invalidate,
-    TResult Function(_GetScrollController value)? initScrollController,
     required TResult orElse(),
   }) {
     if (getBookNew != null) {
@@ -929,7 +930,14 @@ class _$GetBookNewImpl implements _GetBookNew {
 }
 
 abstract class _GetBookNew implements HomeEvent {
-  const factory _GetBookNew() = _$GetBookNewImpl;
+  const factory _GetBookNew({final bool isDone, final bool isLoading}) =
+      _$GetBookNewImpl;
+
+  bool get isDone;
+  bool get isLoading;
+  @JsonKey(ignore: true)
+  _$$GetBookNewImplCopyWith<_$GetBookNewImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -1000,12 +1008,11 @@ class _$GetBookSearhImpl implements _GetBookSearh {
     required TResult Function() init,
     required TResult Function(String search) search,
     required TResult Function(String history) removeHistory,
-    required TResult Function() getBookNew,
+    required TResult Function(bool isDone, bool isLoading) getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
     required TResult Function() refreshBooks,
     required TResult Function() invalidate,
-    required TResult Function() initScrollController,
   }) {
     return getBookSearch(this.search);
   }
@@ -1017,12 +1024,11 @@ class _$GetBookSearhImpl implements _GetBookSearh {
     TResult? Function()? init,
     TResult? Function(String search)? search,
     TResult? Function(String history)? removeHistory,
-    TResult? Function()? getBookNew,
+    TResult? Function(bool isDone, bool isLoading)? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
     TResult? Function()? refreshBooks,
     TResult? Function()? invalidate,
-    TResult? Function()? initScrollController,
   }) {
     return getBookSearch?.call(this.search);
   }
@@ -1034,12 +1040,11 @@ class _$GetBookSearhImpl implements _GetBookSearh {
     TResult Function()? init,
     TResult Function(String search)? search,
     TResult Function(String history)? removeHistory,
-    TResult Function()? getBookNew,
+    TResult Function(bool isDone, bool isLoading)? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
     TResult Function()? refreshBooks,
     TResult Function()? invalidate,
-    TResult Function()? initScrollController,
     required TResult orElse(),
   }) {
     if (getBookSearch != null) {
@@ -1060,7 +1065,6 @@ class _$GetBookSearhImpl implements _GetBookSearh {
     required TResult Function(_GetImagePokemon value) getImagePokemon,
     required TResult Function(_RefreshBooks value) refreshBooks,
     required TResult Function(_Invalidate value) invalidate,
-    required TResult Function(_GetScrollController value) initScrollController,
   }) {
     return getBookSearch(this);
   }
@@ -1077,7 +1081,6 @@ class _$GetBookSearhImpl implements _GetBookSearh {
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
     TResult? Function(_RefreshBooks value)? refreshBooks,
     TResult? Function(_Invalidate value)? invalidate,
-    TResult? Function(_GetScrollController value)? initScrollController,
   }) {
     return getBookSearch?.call(this);
   }
@@ -1094,7 +1097,6 @@ class _$GetBookSearhImpl implements _GetBookSearh {
     TResult Function(_GetImagePokemon value)? getImagePokemon,
     TResult Function(_RefreshBooks value)? refreshBooks,
     TResult Function(_Invalidate value)? invalidate,
-    TResult Function(_GetScrollController value)? initScrollController,
     required TResult orElse(),
   }) {
     if (getBookSearch != null) {
@@ -1156,12 +1158,11 @@ class _$GetImagePokemonImpl implements _GetImagePokemon {
     required TResult Function() init,
     required TResult Function(String search) search,
     required TResult Function(String history) removeHistory,
-    required TResult Function() getBookNew,
+    required TResult Function(bool isDone, bool isLoading) getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
     required TResult Function() refreshBooks,
     required TResult Function() invalidate,
-    required TResult Function() initScrollController,
   }) {
     return getImagePokemon();
   }
@@ -1173,12 +1174,11 @@ class _$GetImagePokemonImpl implements _GetImagePokemon {
     TResult? Function()? init,
     TResult? Function(String search)? search,
     TResult? Function(String history)? removeHistory,
-    TResult? Function()? getBookNew,
+    TResult? Function(bool isDone, bool isLoading)? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
     TResult? Function()? refreshBooks,
     TResult? Function()? invalidate,
-    TResult? Function()? initScrollController,
   }) {
     return getImagePokemon?.call();
   }
@@ -1190,12 +1190,11 @@ class _$GetImagePokemonImpl implements _GetImagePokemon {
     TResult Function()? init,
     TResult Function(String search)? search,
     TResult Function(String history)? removeHistory,
-    TResult Function()? getBookNew,
+    TResult Function(bool isDone, bool isLoading)? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
     TResult Function()? refreshBooks,
     TResult Function()? invalidate,
-    TResult Function()? initScrollController,
     required TResult orElse(),
   }) {
     if (getImagePokemon != null) {
@@ -1216,7 +1215,6 @@ class _$GetImagePokemonImpl implements _GetImagePokemon {
     required TResult Function(_GetImagePokemon value) getImagePokemon,
     required TResult Function(_RefreshBooks value) refreshBooks,
     required TResult Function(_Invalidate value) invalidate,
-    required TResult Function(_GetScrollController value) initScrollController,
   }) {
     return getImagePokemon(this);
   }
@@ -1233,7 +1231,6 @@ class _$GetImagePokemonImpl implements _GetImagePokemon {
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
     TResult? Function(_RefreshBooks value)? refreshBooks,
     TResult? Function(_Invalidate value)? invalidate,
-    TResult? Function(_GetScrollController value)? initScrollController,
   }) {
     return getImagePokemon?.call(this);
   }
@@ -1250,7 +1247,6 @@ class _$GetImagePokemonImpl implements _GetImagePokemon {
     TResult Function(_GetImagePokemon value)? getImagePokemon,
     TResult Function(_RefreshBooks value)? refreshBooks,
     TResult Function(_Invalidate value)? invalidate,
-    TResult Function(_GetScrollController value)? initScrollController,
     required TResult orElse(),
   }) {
     if (getImagePokemon != null) {
@@ -1306,12 +1302,11 @@ class _$RefreshBooksImpl implements _RefreshBooks {
     required TResult Function() init,
     required TResult Function(String search) search,
     required TResult Function(String history) removeHistory,
-    required TResult Function() getBookNew,
+    required TResult Function(bool isDone, bool isLoading) getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
     required TResult Function() refreshBooks,
     required TResult Function() invalidate,
-    required TResult Function() initScrollController,
   }) {
     return refreshBooks();
   }
@@ -1323,12 +1318,11 @@ class _$RefreshBooksImpl implements _RefreshBooks {
     TResult? Function()? init,
     TResult? Function(String search)? search,
     TResult? Function(String history)? removeHistory,
-    TResult? Function()? getBookNew,
+    TResult? Function(bool isDone, bool isLoading)? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
     TResult? Function()? refreshBooks,
     TResult? Function()? invalidate,
-    TResult? Function()? initScrollController,
   }) {
     return refreshBooks?.call();
   }
@@ -1340,12 +1334,11 @@ class _$RefreshBooksImpl implements _RefreshBooks {
     TResult Function()? init,
     TResult Function(String search)? search,
     TResult Function(String history)? removeHistory,
-    TResult Function()? getBookNew,
+    TResult Function(bool isDone, bool isLoading)? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
     TResult Function()? refreshBooks,
     TResult Function()? invalidate,
-    TResult Function()? initScrollController,
     required TResult orElse(),
   }) {
     if (refreshBooks != null) {
@@ -1366,7 +1359,6 @@ class _$RefreshBooksImpl implements _RefreshBooks {
     required TResult Function(_GetImagePokemon value) getImagePokemon,
     required TResult Function(_RefreshBooks value) refreshBooks,
     required TResult Function(_Invalidate value) invalidate,
-    required TResult Function(_GetScrollController value) initScrollController,
   }) {
     return refreshBooks(this);
   }
@@ -1383,7 +1375,6 @@ class _$RefreshBooksImpl implements _RefreshBooks {
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
     TResult? Function(_RefreshBooks value)? refreshBooks,
     TResult? Function(_Invalidate value)? invalidate,
-    TResult? Function(_GetScrollController value)? initScrollController,
   }) {
     return refreshBooks?.call(this);
   }
@@ -1400,7 +1391,6 @@ class _$RefreshBooksImpl implements _RefreshBooks {
     TResult Function(_GetImagePokemon value)? getImagePokemon,
     TResult Function(_RefreshBooks value)? refreshBooks,
     TResult Function(_Invalidate value)? invalidate,
-    TResult Function(_GetScrollController value)? initScrollController,
     required TResult orElse(),
   }) {
     if (refreshBooks != null) {
@@ -1456,12 +1446,11 @@ class _$InvalidateImpl implements _Invalidate {
     required TResult Function() init,
     required TResult Function(String search) search,
     required TResult Function(String history) removeHistory,
-    required TResult Function() getBookNew,
+    required TResult Function(bool isDone, bool isLoading) getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
     required TResult Function() refreshBooks,
     required TResult Function() invalidate,
-    required TResult Function() initScrollController,
   }) {
     return invalidate();
   }
@@ -1473,12 +1462,11 @@ class _$InvalidateImpl implements _Invalidate {
     TResult? Function()? init,
     TResult? Function(String search)? search,
     TResult? Function(String history)? removeHistory,
-    TResult? Function()? getBookNew,
+    TResult? Function(bool isDone, bool isLoading)? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
     TResult? Function()? refreshBooks,
     TResult? Function()? invalidate,
-    TResult? Function()? initScrollController,
   }) {
     return invalidate?.call();
   }
@@ -1490,12 +1478,11 @@ class _$InvalidateImpl implements _Invalidate {
     TResult Function()? init,
     TResult Function(String search)? search,
     TResult Function(String history)? removeHistory,
-    TResult Function()? getBookNew,
+    TResult Function(bool isDone, bool isLoading)? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
     TResult Function()? refreshBooks,
     TResult Function()? invalidate,
-    TResult Function()? initScrollController,
     required TResult orElse(),
   }) {
     if (invalidate != null) {
@@ -1516,7 +1503,6 @@ class _$InvalidateImpl implements _Invalidate {
     required TResult Function(_GetImagePokemon value) getImagePokemon,
     required TResult Function(_RefreshBooks value) refreshBooks,
     required TResult Function(_Invalidate value) invalidate,
-    required TResult Function(_GetScrollController value) initScrollController,
   }) {
     return invalidate(this);
   }
@@ -1533,7 +1519,6 @@ class _$InvalidateImpl implements _Invalidate {
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
     TResult? Function(_RefreshBooks value)? refreshBooks,
     TResult? Function(_Invalidate value)? invalidate,
-    TResult? Function(_GetScrollController value)? initScrollController,
   }) {
     return invalidate?.call(this);
   }
@@ -1550,7 +1535,6 @@ class _$InvalidateImpl implements _Invalidate {
     TResult Function(_GetImagePokemon value)? getImagePokemon,
     TResult Function(_RefreshBooks value)? refreshBooks,
     TResult Function(_Invalidate value)? invalidate,
-    TResult Function(_GetScrollController value)? initScrollController,
     required TResult orElse(),
   }) {
     if (invalidate != null) {
@@ -1562,157 +1546,6 @@ class _$InvalidateImpl implements _Invalidate {
 
 abstract class _Invalidate implements HomeEvent {
   const factory _Invalidate() = _$InvalidateImpl;
-}
-
-/// @nodoc
-abstract class _$$GetScrollControllerImplCopyWith<$Res> {
-  factory _$$GetScrollControllerImplCopyWith(_$GetScrollControllerImpl value,
-          $Res Function(_$GetScrollControllerImpl) then) =
-      __$$GetScrollControllerImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$GetScrollControllerImplCopyWithImpl<$Res>
-    extends _$HomeEventCopyWithImpl<$Res, _$GetScrollControllerImpl>
-    implements _$$GetScrollControllerImplCopyWith<$Res> {
-  __$$GetScrollControllerImplCopyWithImpl(_$GetScrollControllerImpl _value,
-      $Res Function(_$GetScrollControllerImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$GetScrollControllerImpl implements _GetScrollController {
-  const _$GetScrollControllerImpl();
-
-  @override
-  String toString() {
-    return 'HomeEvent.initScrollController()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GetScrollControllerImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() started,
-    required TResult Function() init,
-    required TResult Function(String search) search,
-    required TResult Function(String history) removeHistory,
-    required TResult Function() getBookNew,
-    required TResult Function(String search) getBookSearch,
-    required TResult Function() getImagePokemon,
-    required TResult Function() refreshBooks,
-    required TResult Function() invalidate,
-    required TResult Function() initScrollController,
-  }) {
-    return initScrollController();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? started,
-    TResult? Function()? init,
-    TResult? Function(String search)? search,
-    TResult? Function(String history)? removeHistory,
-    TResult? Function()? getBookNew,
-    TResult? Function(String search)? getBookSearch,
-    TResult? Function()? getImagePokemon,
-    TResult? Function()? refreshBooks,
-    TResult? Function()? invalidate,
-    TResult? Function()? initScrollController,
-  }) {
-    return initScrollController?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? started,
-    TResult Function()? init,
-    TResult Function(String search)? search,
-    TResult Function(String history)? removeHistory,
-    TResult Function()? getBookNew,
-    TResult Function(String search)? getBookSearch,
-    TResult Function()? getImagePokemon,
-    TResult Function()? refreshBooks,
-    TResult Function()? invalidate,
-    TResult Function()? initScrollController,
-    required TResult orElse(),
-  }) {
-    if (initScrollController != null) {
-      return initScrollController();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Started value) started,
-    required TResult Function(_Init value) init,
-    required TResult Function(_Search value) search,
-    required TResult Function(_RemoveHistory value) removeHistory,
-    required TResult Function(_GetBookNew value) getBookNew,
-    required TResult Function(_GetBookSearh value) getBookSearch,
-    required TResult Function(_GetImagePokemon value) getImagePokemon,
-    required TResult Function(_RefreshBooks value) refreshBooks,
-    required TResult Function(_Invalidate value) invalidate,
-    required TResult Function(_GetScrollController value) initScrollController,
-  }) {
-    return initScrollController(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Started value)? started,
-    TResult? Function(_Init value)? init,
-    TResult? Function(_Search value)? search,
-    TResult? Function(_RemoveHistory value)? removeHistory,
-    TResult? Function(_GetBookNew value)? getBookNew,
-    TResult? Function(_GetBookSearh value)? getBookSearch,
-    TResult? Function(_GetImagePokemon value)? getImagePokemon,
-    TResult? Function(_RefreshBooks value)? refreshBooks,
-    TResult? Function(_Invalidate value)? invalidate,
-    TResult? Function(_GetScrollController value)? initScrollController,
-  }) {
-    return initScrollController?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Started value)? started,
-    TResult Function(_Init value)? init,
-    TResult Function(_Search value)? search,
-    TResult Function(_RemoveHistory value)? removeHistory,
-    TResult Function(_GetBookNew value)? getBookNew,
-    TResult Function(_GetBookSearh value)? getBookSearch,
-    TResult Function(_GetImagePokemon value)? getImagePokemon,
-    TResult Function(_RefreshBooks value)? refreshBooks,
-    TResult Function(_Invalidate value)? invalidate,
-    TResult Function(_GetScrollController value)? initScrollController,
-    required TResult orElse(),
-  }) {
-    if (initScrollController != null) {
-      return initScrollController(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _GetScrollController implements HomeEvent {
-  const factory _GetScrollController() = _$GetScrollControllerImpl;
 }
 
 /// @nodoc

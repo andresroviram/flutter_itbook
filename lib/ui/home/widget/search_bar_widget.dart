@@ -7,10 +7,10 @@ import '../bloc/home/home_bloc.dart';
 class SearchBarWidget extends StatefulWidget {
   const SearchBarWidget({
     super.key,
-    required this.constraints,
+    this.constraints,
     this.voidCallback,
   });
-  final BoxConstraints constraints;
+  final BoxConstraints? constraints;
   final VoidCallback? voidCallback;
 
   @override
@@ -36,6 +36,8 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final maxHeight = MediaQuery.of(context).size.height;
+    final maxWidth = MediaQuery.of(context).size.width;
     return Padding(
       padding: const EdgeInsets.symmetric(
         horizontal: 20,
@@ -57,6 +59,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
           icon: const Icon(Icons.arrow_back),
         ),
         viewOnSubmitted: (value) {
+          debugPrint('sssssssssssssr');
           homeBloc.add(HomeEvent.search(search: value.trim()));
           searchController.closeView(value.trim());
           widget.voidCallback?.call();
@@ -119,9 +122,9 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
           },
         ),
         viewConstraints: BoxConstraints(
-          maxWidth: widget.constraints.maxWidth,
-          minHeight: widget.constraints.minHeight,
-          maxHeight: widget.constraints.maxHeight,
+          maxWidth: widget.constraints?.maxWidth ?? maxWidth,
+          minHeight: widget.constraints?.minHeight ?? 0,
+          maxHeight: widget.constraints?.maxHeight ?? maxHeight,
         ),
       ),
     );

@@ -11,46 +11,39 @@ class HomeMovil extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (BuildContext context, BoxConstraints constraints) {
-        return ConstrainedBox(
-          constraints: BoxConstraints(minHeight: constraints.maxHeight),
-          child: Column(
-            children: [
-              SearchBarWidget(
-                constraints: constraints,
-              ),
-              Expanded(
-                child: BlocBuilder<HomeBloc, HomeState>(
-                  builder: (context, state) {
-                    return SingleChildScrollView(
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          if (state.searchBooks.isNotEmpty) ...[
-                            const SearchWidget()
-                          ],
-                          const Padding(
-                            padding: EdgeInsets.symmetric(
-                              horizontal: 20,
-                              vertical: 10,
-                            ),
-                            child: Text(
-                              'Books',
-                              textAlign: TextAlign.left,
-                            ),
-                          ),
-                          const BookListView(),
-                        ],
+    final scrollController = context.watch<HomeBloc>().scrollController;
+    return Column(
+      children: [
+        SearchBarWidget(
+          voidCallback: context.read<HomeBloc>().scrollUp,
+        ),
+        Expanded(
+          child: BlocBuilder<HomeBloc, HomeState>(
+            builder: (context, state) {
+              return SingleChildScrollView(
+                controller: scrollController,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    if (state.searchBooks.isNotEmpty) ...[const SearchWidget()],
+                    const Padding(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: 20,
+                        vertical: 10,
                       ),
-                    );
-                  },
+                      child: Text(
+                        'Books',
+                        textAlign: TextAlign.left,
+                      ),
+                    ),
+                    const BookListView(),
+                  ],
                 ),
-              ),
-            ],
+              );
+            },
           ),
-        );
-      },
+        ),
+      ],
     );
   }
 }

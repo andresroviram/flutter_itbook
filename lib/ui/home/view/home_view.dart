@@ -39,7 +39,6 @@ class HomeView extends StatelessWidget {
   Widget build(BuildContext context) {
     final breakpoint = ResponsiveBreakpoints.of(context).breakpoint;
     OverlayEntry loader = context.read<HomeBloc>().loader;
-
     return Listener(
       behavior: HitTestBehavior.opaque,
       onPointerDown: (_) {

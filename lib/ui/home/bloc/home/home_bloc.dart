@@ -32,7 +32,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     on<_GetBookNew>(_getBookNew);
     on<_RefreshBooks>(_refreshBooks);
     on<_Invalidate>(_invalidate);
-    on<_GetScrollController>(_initScrollController);
     on<_Search>(_search);
     on<_GetBookSearh>(_getBookSerch);
     on<_RemoveHistory>(_removeHistory);
@@ -55,7 +54,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     emit(state.copyWith(historyList: historyList));
 
     add(const _GetBookNew());
-    add(const _GetScrollController());
+    _initScrollController();
   }
 
   Future<void> _refreshBooks(
@@ -63,28 +62,35 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     add(const _GetBookNew());
   }
 
-  void _initScrollController(
-      _GetScrollController event, Emitter<HomeState> emit) {
+  void _initScrollController() {
     scrollController = ScrollController();
     scrollController.addListener(() {
-      if (scrollController.position.pixels ==
-              scrollController.position.maxScrollExtent &&
-          !state.isDone) {
-        emit(state.copyWith(isDone: true));
-        add(const _GetBookNew());
+      bool scrollEnd = scrollController.position.pixels ==
+          scrollController.position.maxScrollExtent;
+      if (scrollEnd && !state.isDone) {
+        add(const _GetBookNew(isLoading: false, isDone: true));
       }
     });
   }
 
+  void scrollUp() {
+    const double start = 0;
+    // scrollController.jumpTo(start);
+    scrollController.animateTo(
+      start,
+      duration: const Duration(seconds: 1),
+      curve: Curves.easeIn,
+    );
+  }
+
   Future<void> _getBookNew(_GetBookNew event, Emitter<HomeState> emit) async {
     offset++;
-    emit(state.copyWith(isLoading: true));
+    emit(state.copyWith(isLoading: event.isLoading, isDone: event.isDone));
     final either = await _homeUseCase.getBookNew();
     switch (either) {
       case Left(value: Failure failure):
         emit(state.copyWith(failure: failure, isLoading: false, isDone: false));
       case Right(value: List<BookEntity> books):
-        emit(state.copyWith(books: []));
         emit(state.copyWith(
           books: books,
           isLoading: false,

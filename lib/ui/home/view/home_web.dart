@@ -11,17 +11,22 @@ class HomeWeb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final scrollController = context.watch<HomeBloc>().scrollController;
     return LayoutBuilder(
       builder: (BuildContext context, BoxConstraints constraints) {
         return ConstrainedBox(
           constraints: BoxConstraints(minHeight: constraints.maxHeight),
           child: Column(
             children: [
-              SearchBarWidget(constraints: constraints),
+              SearchBarWidget(
+                constraints: constraints,
+                voidCallback: context.read<HomeBloc>().scrollUp,
+              ),
               Expanded(
                 child: BlocBuilder<HomeBloc, HomeState>(
                   builder: (context, state) {
                     return SingleChildScrollView(
+                      controller: scrollController,
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[

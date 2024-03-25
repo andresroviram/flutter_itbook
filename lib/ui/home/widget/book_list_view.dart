@@ -16,21 +16,18 @@ class BookListView extends StatelessWidget {
     String heroTag = 'book';
     final books = context.watch<HomeBloc>().state.books;
     final isDone = context.watch<HomeBloc>().state.isDone;
-    final scrollController = context.watch<HomeBloc>().scrollController;
     return RefreshIndicator(
       onRefresh: context.read<HomeBloc>().refreshList,
       child: ListView.separated(
-        controller: scrollController,
         shrinkWrap: true,
         primary: false,
         padding: const EdgeInsets.only(
           left: 20,
           right: 20,
-          bottom: 20,
           top: 5,
         ),
         physics: const BouncingScrollPhysics(),
-        itemCount: books.length > 20 ? 11 : books.length + 1,
+        itemCount: books.length + 1,
         itemBuilder: (context, index) {
           if (index == books.length) {
             return Padding(
@@ -39,7 +36,7 @@ class BookListView extends StatelessWidget {
                 child: Opacity(
                   opacity: isDone ? 1 : 0,
                   child: CircularProgressIndicator(
-                      color: Theme.of(context).colorScheme.primary),
+                      color: Theme.of(context).hintColor),
                 ),
               ),
             );
