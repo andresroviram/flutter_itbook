@@ -2,6 +2,18 @@
 
 A new Flutter project.
 
+## Screenshots
+
+<br>
+<p align="center">
+<img src="screenshots/Screenshot_1711089737.png" width="30%">
+<img src="screenshots/Screenshot_1711089671.png" width="30%">
+<img src="screenshots/Screenshot_1711349111.png" width="30%">
+<img src="screenshots/Screenshot_1711349101.png" width="30%">
+<img src="screenshots/Screenshot_1711349327.png" width="30%">
+<img src="screenshots/Screenshot_1711089700.png" width="30%">
+</p>
+
 ## Using on this app
 
 - Clean Architecture
@@ -17,17 +29,7 @@ A new Flutter project.
 
 ![Image](screenshots/diagram.png)
 
-## Screenshots
 
-<br>
-<p align="center">
-<img src="screenshots/Screenshot_1711089737.png" width="30%">
-<img src="screenshots/Screenshot_1711089671.png" width="30%">
-<img src="screenshots/Screenshot_1711349111.png" width="30%">
-<img src="screenshots/Screenshot_1711349101.png" width="30%">
-<img src="screenshots/Screenshot_1711349327.png" width="30%">
-<img src="screenshots/Screenshot_1711089700.png" width="30%">
-</p>
 
 ## How to use
 
