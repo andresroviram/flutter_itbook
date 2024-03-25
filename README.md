@@ -24,7 +24,8 @@ A new Flutter project.
 <img src="screenshots/Screenshot_1711089737.png" width="30%">
 <img src="screenshots/Screenshot_1711089671.png" width="30%">
 <img src="screenshots/Screenshot_1711089683.png" width="30%">
-<img src="screenshots/Screenshot_1711089678.png" width="30%">
+<img src="screenshots/Screenshot_1711329507.png" width="30%">
+<img src="screenshots/Screenshot_1711329571.png" width="30%">
 <img src="screenshots/Screenshot_1711089700.png" width="30%">
 </p>
 
