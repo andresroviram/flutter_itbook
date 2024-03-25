@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/common/utils/helpers.dart';
 import '../../navigation/cubit/home_navigation.dart';
@@ -16,19 +17,21 @@ class HomeMovil extends StatefulWidget {
 }
 
 class _HomeMovilState extends State<HomeMovil> {
+  late HomeBloc homeBloc;
   late SearchController searchController;
   late String searchResult;
 
   @override
   void initState() {
     super.initState();
+    homeBloc = context.read<HomeBloc>();
     searchController = SearchController();
   }
 
   @override
   Widget build(BuildContext context) {
     String heroTag = 'book';
-    OverlayEntry loader = context.watch<HomeBloc>().loader;
+    OverlayEntry loader = homeBloc.loader;
     return BlocListener<HomeBloc, HomeState>(
       listener: (context, state) {
         if (state.failure != null) {
@@ -60,10 +63,14 @@ class _HomeMovilState extends State<HomeMovil> {
                       ),
                       child: SearchAnchor(
                         searchController: searchController,
+                        viewLeading: IconButton(
+                          onPressed: () {
+                            context.pop();
+                          },
+                          icon: const Icon(Icons.arrow_back),
+                        ),
                         viewOnSubmitted: (value) {
-                          context
-                              .read<HomeBloc>()
-                              .add(HomeEvent.search(search: value.trim()));
+                          homeBloc.add(HomeEvent.search(search: value.trim()));
                           searchController.closeView(value.trim());
                           setState(() {
                             searchResult = value.trim();
@@ -109,14 +116,28 @@ class _HomeMovilState extends State<HomeMovil> {
                             final history = state.historyList[index];
                             return ListTile(
                               title: Text(history),
+                              hoverColor: Colors.white.withOpacity(0.5),
                               onTap: () {
-                                context
-                                    .read<HomeBloc>()
-                                    .add(HomeEvent.search(search: history));
+                                homeBloc.add(HomeEvent.search(search: history));
+                                controller.closeView(history);
                                 setState(() {
-                                  controller.closeView(history);
+                                  searchResult = history;
                                 });
                               },
+                              trailing: TextButton(
+                                onPressed: () {
+                                  homeBloc
+                                      .add(HomeEvent.removeHistory(history));
+                                  controller.closeView(history);
+                                },
+                                style: TextButton.styleFrom(
+                                  elevation: 2,
+                                  padding: const EdgeInsets.symmetric(
+                                    horizontal: 5,
+                                  ),
+                                ),
+                                child: const Text('quitar'),
+                              ),
                             );
                           },
                         ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import '../../../core/common/services/local_storage.dart';
 import '../../../core/home/domain/usecases/home_usecases.dart';
 import '../../../injectable_dependency.dart';
 import '../../home/bloc/home/home_bloc.dart';
@@ -21,6 +22,7 @@ class SettingView extends StatelessWidget {
             lazy: false,
             create: (context) => HomeBloc(
               homeUseCase: getIt<HomeUseCase>(),
+              localStorage: getIt<LocalStorage>(),
             ),
           ),
           BlocProvider.value(

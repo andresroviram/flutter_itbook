@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../../core/common/error/error.dart';
+import '../../../../core/common/services/local_storage.dart';
 import '../../../../core/common/utils/helpers.dart';
 import '../../../../core/home/domain/entities/entities.dart';
 import '../../../../core/home/domain/usecases/home_usecases.dart';
@@ -16,20 +17,25 @@ part 'home_bloc.freezed.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   final HomeUseCase _homeUseCase;
+  final LocalStorage _localStorage;
   late OverlayEntry loader;
   late Debouncer debouncer;
-  HomeBloc({required HomeUseCase homeUseCase})
-      : _homeUseCase = homeUseCase,
+  HomeBloc({
+    required HomeUseCase homeUseCase,
+    required LocalStorage localStorage,
+  })  : _homeUseCase = homeUseCase,
+        _localStorage = localStorage,
         debouncer = Debouncer(),
         super(const _Initial()) {
     loader = Overloading.instance.overLayEntry();
+    on<_Init>(_init);
     on<_GetBookNew>(_getBookNew);
     on<_RefreshBooks>(_refreshBooks);
     on<_Invalidate>(_invalidate);
     on<_GetScrollController>(_initScrollController);
-    // on<_GetImagePokemon>(_getImagePokemon);
     on<_Search>(_search);
     on<_GetBookSearh>(_getBookSerch);
+    on<_RemoveHistory>(_removeHistory);
   }
 
   late ScrollController scrollController;
@@ -38,6 +44,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   Future<void> refreshList() async {
     add(const _RefreshBooks());
+  }
+
+  Future<void> _init(_Init event, Emitter<HomeState> emit) async {
+    final historyList = await _localStorage.getHistoryList();
+    emit(state.copyWith(historyList: historyList));
+
+    add(const _GetBookNew());
+    add(const _GetScrollController());
   }
 
   Future<void> _refreshBooks(
@@ -80,9 +94,17 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     }
   }
 
+  Future<void> _removeHistory(
+      _RemoveHistory event, Emitter<HomeState> emit) async {
+    final historyList = await _localStorage.getHistoryList();
+    historyList.remove(event.history);
+    _localStorage.saveHistoryList(historyList);
+    emit(state.copyWith(historyList: historyList));
+  }
+
   Future<void> _getBookSerch(
       _GetBookSearh event, Emitter<HomeState> emit) async {
-    final historyList = state.historyList.toList();
+    final historyList = await _localStorage.getHistoryList();
     final newList = <String>[];
 
     final isExist = historyList.contains(event.search);
@@ -93,10 +115,13 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         newList.addAll(historyList);
       } else {
         newList.insert(0, event.search);
-        historyList.removeLast();
+        historyList.toList().removeLast();
         newList.addAll(historyList);
       }
+    } else {
+      newList.addAll(historyList);
     }
+    _localStorage.saveHistoryList(newList);
 
     emit(state.copyWith(
       isLoading: true,

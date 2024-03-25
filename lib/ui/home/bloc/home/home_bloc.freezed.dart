@@ -19,7 +19,9 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() init,
     required TResult Function(String search) search,
+    required TResult Function(String history) removeHistory,
     required TResult Function() getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
@@ -31,7 +33,9 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? init,
     TResult? Function(String search)? search,
+    TResult? Function(String history)? removeHistory,
     TResult? Function()? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
@@ -43,7 +47,9 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? init,
     TResult Function(String search)? search,
+    TResult Function(String history)? removeHistory,
     TResult Function()? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
@@ -56,7 +62,9 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Init value) init,
     required TResult Function(_Search value) search,
+    required TResult Function(_RemoveHistory value) removeHistory,
     required TResult Function(_GetBookNew value) getBookNew,
     required TResult Function(_GetBookSearh value) getBookSearch,
     required TResult Function(_GetImagePokemon value) getImagePokemon,
@@ -68,7 +76,9 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Init value)? init,
     TResult? Function(_Search value)? search,
+    TResult? Function(_RemoveHistory value)? removeHistory,
     TResult? Function(_GetBookNew value)? getBookNew,
     TResult? Function(_GetBookSearh value)? getBookSearch,
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
@@ -80,7 +90,9 @@ mixin _$HomeEvent {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Init value)? init,
     TResult Function(_Search value)? search,
+    TResult Function(_RemoveHistory value)? removeHistory,
     TResult Function(_GetBookNew value)? getBookNew,
     TResult Function(_GetBookSearh value)? getBookSearch,
     TResult Function(_GetImagePokemon value)? getImagePokemon,
@@ -148,7 +160,9 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() init,
     required TResult Function(String search) search,
+    required TResult Function(String history) removeHistory,
     required TResult Function() getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
@@ -163,7 +177,9 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? init,
     TResult? Function(String search)? search,
+    TResult? Function(String history)? removeHistory,
     TResult? Function()? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
@@ -178,7 +194,9 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? init,
     TResult Function(String search)? search,
+    TResult Function(String history)? removeHistory,
     TResult Function()? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
@@ -197,7 +215,9 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Init value) init,
     required TResult Function(_Search value) search,
+    required TResult Function(_RemoveHistory value) removeHistory,
     required TResult Function(_GetBookNew value) getBookNew,
     required TResult Function(_GetBookSearh value) getBookSearch,
     required TResult Function(_GetImagePokemon value) getImagePokemon,
@@ -212,7 +232,9 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Init value)? init,
     TResult? Function(_Search value)? search,
+    TResult? Function(_RemoveHistory value)? removeHistory,
     TResult? Function(_GetBookNew value)? getBookNew,
     TResult? Function(_GetBookSearh value)? getBookSearch,
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
@@ -227,7 +249,9 @@ class _$StartedImpl implements _Started {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Init value)? init,
     TResult Function(_Search value)? search,
+    TResult Function(_RemoveHistory value)? removeHistory,
     TResult Function(_GetBookNew value)? getBookNew,
     TResult Function(_GetBookSearh value)? getBookSearch,
     TResult Function(_GetImagePokemon value)? getImagePokemon,
@@ -245,6 +269,155 @@ class _$StartedImpl implements _Started {
 
 abstract class _Started implements HomeEvent {
   const factory _Started() = _$StartedImpl;
+}
+
+/// @nodoc
+abstract class _$$InitImplCopyWith<$Res> {
+  factory _$$InitImplCopyWith(
+          _$InitImpl value, $Res Function(_$InitImpl) then) =
+      __$$InitImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$InitImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$InitImpl>
+    implements _$$InitImplCopyWith<$Res> {
+  __$$InitImplCopyWithImpl(_$InitImpl _value, $Res Function(_$InitImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$InitImpl implements _Init {
+  const _$InitImpl();
+
+  @override
+  String toString() {
+    return 'HomeEvent.init()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$InitImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() init,
+    required TResult Function(String search) search,
+    required TResult Function(String history) removeHistory,
+    required TResult Function() getBookNew,
+    required TResult Function(String search) getBookSearch,
+    required TResult Function() getImagePokemon,
+    required TResult Function() refreshBooks,
+    required TResult Function() invalidate,
+    required TResult Function() initScrollController,
+  }) {
+    return init();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? init,
+    TResult? Function(String search)? search,
+    TResult? Function(String history)? removeHistory,
+    TResult? Function()? getBookNew,
+    TResult? Function(String search)? getBookSearch,
+    TResult? Function()? getImagePokemon,
+    TResult? Function()? refreshBooks,
+    TResult? Function()? invalidate,
+    TResult? Function()? initScrollController,
+  }) {
+    return init?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? init,
+    TResult Function(String search)? search,
+    TResult Function(String history)? removeHistory,
+    TResult Function()? getBookNew,
+    TResult Function(String search)? getBookSearch,
+    TResult Function()? getImagePokemon,
+    TResult Function()? refreshBooks,
+    TResult Function()? invalidate,
+    TResult Function()? initScrollController,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Init value) init,
+    required TResult Function(_Search value) search,
+    required TResult Function(_RemoveHistory value) removeHistory,
+    required TResult Function(_GetBookNew value) getBookNew,
+    required TResult Function(_GetBookSearh value) getBookSearch,
+    required TResult Function(_GetImagePokemon value) getImagePokemon,
+    required TResult Function(_RefreshBooks value) refreshBooks,
+    required TResult Function(_Invalidate value) invalidate,
+    required TResult Function(_GetScrollController value) initScrollController,
+  }) {
+    return init(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Init value)? init,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_RemoveHistory value)? removeHistory,
+    TResult? Function(_GetBookNew value)? getBookNew,
+    TResult? Function(_GetBookSearh value)? getBookSearch,
+    TResult? Function(_GetImagePokemon value)? getImagePokemon,
+    TResult? Function(_RefreshBooks value)? refreshBooks,
+    TResult? Function(_Invalidate value)? invalidate,
+    TResult? Function(_GetScrollController value)? initScrollController,
+  }) {
+    return init?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Init value)? init,
+    TResult Function(_Search value)? search,
+    TResult Function(_RemoveHistory value)? removeHistory,
+    TResult Function(_GetBookNew value)? getBookNew,
+    TResult Function(_GetBookSearh value)? getBookSearch,
+    TResult Function(_GetImagePokemon value)? getImagePokemon,
+    TResult Function(_RefreshBooks value)? refreshBooks,
+    TResult Function(_Invalidate value)? invalidate,
+    TResult Function(_GetScrollController value)? initScrollController,
+    required TResult orElse(),
+  }) {
+    if (init != null) {
+      return init(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Init implements HomeEvent {
+  const factory _Init() = _$InitImpl;
 }
 
 /// @nodoc
@@ -312,7 +485,9 @@ class _$SearchImpl implements _Search {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() init,
     required TResult Function(String search) search,
+    required TResult Function(String history) removeHistory,
     required TResult Function() getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
@@ -327,7 +502,9 @@ class _$SearchImpl implements _Search {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? init,
     TResult? Function(String search)? search,
+    TResult? Function(String history)? removeHistory,
     TResult? Function()? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
@@ -342,7 +519,9 @@ class _$SearchImpl implements _Search {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? init,
     TResult Function(String search)? search,
+    TResult Function(String history)? removeHistory,
     TResult Function()? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
@@ -361,7 +540,9 @@ class _$SearchImpl implements _Search {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Init value) init,
     required TResult Function(_Search value) search,
+    required TResult Function(_RemoveHistory value) removeHistory,
     required TResult Function(_GetBookNew value) getBookNew,
     required TResult Function(_GetBookSearh value) getBookSearch,
     required TResult Function(_GetImagePokemon value) getImagePokemon,
@@ -376,7 +557,9 @@ class _$SearchImpl implements _Search {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Init value)? init,
     TResult? Function(_Search value)? search,
+    TResult? Function(_RemoveHistory value)? removeHistory,
     TResult? Function(_GetBookNew value)? getBookNew,
     TResult? Function(_GetBookSearh value)? getBookSearch,
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
@@ -391,7 +574,9 @@ class _$SearchImpl implements _Search {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Init value)? init,
     TResult Function(_Search value)? search,
+    TResult Function(_RemoveHistory value)? removeHistory,
     TResult Function(_GetBookNew value)? getBookNew,
     TResult Function(_GetBookSearh value)? getBookSearch,
     TResult Function(_GetImagePokemon value)? getImagePokemon,
@@ -413,6 +598,187 @@ abstract class _Search implements HomeEvent {
   String get search;
   @JsonKey(ignore: true)
   _$$SearchImplCopyWith<_$SearchImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$RemoveHistoryImplCopyWith<$Res> {
+  factory _$$RemoveHistoryImplCopyWith(
+          _$RemoveHistoryImpl value, $Res Function(_$RemoveHistoryImpl) then) =
+      __$$RemoveHistoryImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({String history});
+}
+
+/// @nodoc
+class __$$RemoveHistoryImplCopyWithImpl<$Res>
+    extends _$HomeEventCopyWithImpl<$Res, _$RemoveHistoryImpl>
+    implements _$$RemoveHistoryImplCopyWith<$Res> {
+  __$$RemoveHistoryImplCopyWithImpl(
+      _$RemoveHistoryImpl _value, $Res Function(_$RemoveHistoryImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? history = null,
+  }) {
+    return _then(_$RemoveHistoryImpl(
+      null == history
+          ? _value.history
+          : history // ignore: cast_nullable_to_non_nullable
+              as String,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$RemoveHistoryImpl implements _RemoveHistory {
+  const _$RemoveHistoryImpl(this.history);
+
+  @override
+  final String history;
+
+  @override
+  String toString() {
+    return 'HomeEvent.removeHistory(history: $history)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$RemoveHistoryImpl &&
+            (identical(other.history, history) || other.history == history));
+  }
+
+  @override
+  int get hashCode => Object.hash(runtimeType, history);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$RemoveHistoryImplCopyWith<_$RemoveHistoryImpl> get copyWith =>
+      __$$RemoveHistoryImplCopyWithImpl<_$RemoveHistoryImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() started,
+    required TResult Function() init,
+    required TResult Function(String search) search,
+    required TResult Function(String history) removeHistory,
+    required TResult Function() getBookNew,
+    required TResult Function(String search) getBookSearch,
+    required TResult Function() getImagePokemon,
+    required TResult Function() refreshBooks,
+    required TResult Function() invalidate,
+    required TResult Function() initScrollController,
+  }) {
+    return removeHistory(history);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? started,
+    TResult? Function()? init,
+    TResult? Function(String search)? search,
+    TResult? Function(String history)? removeHistory,
+    TResult? Function()? getBookNew,
+    TResult? Function(String search)? getBookSearch,
+    TResult? Function()? getImagePokemon,
+    TResult? Function()? refreshBooks,
+    TResult? Function()? invalidate,
+    TResult? Function()? initScrollController,
+  }) {
+    return removeHistory?.call(history);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? started,
+    TResult Function()? init,
+    TResult Function(String search)? search,
+    TResult Function(String history)? removeHistory,
+    TResult Function()? getBookNew,
+    TResult Function(String search)? getBookSearch,
+    TResult Function()? getImagePokemon,
+    TResult Function()? refreshBooks,
+    TResult Function()? invalidate,
+    TResult Function()? initScrollController,
+    required TResult orElse(),
+  }) {
+    if (removeHistory != null) {
+      return removeHistory(history);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Started value) started,
+    required TResult Function(_Init value) init,
+    required TResult Function(_Search value) search,
+    required TResult Function(_RemoveHistory value) removeHistory,
+    required TResult Function(_GetBookNew value) getBookNew,
+    required TResult Function(_GetBookSearh value) getBookSearch,
+    required TResult Function(_GetImagePokemon value) getImagePokemon,
+    required TResult Function(_RefreshBooks value) refreshBooks,
+    required TResult Function(_Invalidate value) invalidate,
+    required TResult Function(_GetScrollController value) initScrollController,
+  }) {
+    return removeHistory(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Started value)? started,
+    TResult? Function(_Init value)? init,
+    TResult? Function(_Search value)? search,
+    TResult? Function(_RemoveHistory value)? removeHistory,
+    TResult? Function(_GetBookNew value)? getBookNew,
+    TResult? Function(_GetBookSearh value)? getBookSearch,
+    TResult? Function(_GetImagePokemon value)? getImagePokemon,
+    TResult? Function(_RefreshBooks value)? refreshBooks,
+    TResult? Function(_Invalidate value)? invalidate,
+    TResult? Function(_GetScrollController value)? initScrollController,
+  }) {
+    return removeHistory?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Started value)? started,
+    TResult Function(_Init value)? init,
+    TResult Function(_Search value)? search,
+    TResult Function(_RemoveHistory value)? removeHistory,
+    TResult Function(_GetBookNew value)? getBookNew,
+    TResult Function(_GetBookSearh value)? getBookSearch,
+    TResult Function(_GetImagePokemon value)? getImagePokemon,
+    TResult Function(_RefreshBooks value)? refreshBooks,
+    TResult Function(_Invalidate value)? invalidate,
+    TResult Function(_GetScrollController value)? initScrollController,
+    required TResult orElse(),
+  }) {
+    if (removeHistory != null) {
+      return removeHistory(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _RemoveHistory implements HomeEvent {
+  const factory _RemoveHistory(final String history) = _$RemoveHistoryImpl;
+
+  String get history;
+  @JsonKey(ignore: true)
+  _$$RemoveHistoryImplCopyWith<_$RemoveHistoryImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -455,7 +821,9 @@ class _$GetBookNewImpl implements _GetBookNew {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() init,
     required TResult Function(String search) search,
+    required TResult Function(String history) removeHistory,
     required TResult Function() getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
@@ -470,7 +838,9 @@ class _$GetBookNewImpl implements _GetBookNew {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? init,
     TResult? Function(String search)? search,
+    TResult? Function(String history)? removeHistory,
     TResult? Function()? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
@@ -485,7 +855,9 @@ class _$GetBookNewImpl implements _GetBookNew {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? init,
     TResult Function(String search)? search,
+    TResult Function(String history)? removeHistory,
     TResult Function()? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
@@ -504,7 +876,9 @@ class _$GetBookNewImpl implements _GetBookNew {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Init value) init,
     required TResult Function(_Search value) search,
+    required TResult Function(_RemoveHistory value) removeHistory,
     required TResult Function(_GetBookNew value) getBookNew,
     required TResult Function(_GetBookSearh value) getBookSearch,
     required TResult Function(_GetImagePokemon value) getImagePokemon,
@@ -519,7 +893,9 @@ class _$GetBookNewImpl implements _GetBookNew {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Init value)? init,
     TResult? Function(_Search value)? search,
+    TResult? Function(_RemoveHistory value)? removeHistory,
     TResult? Function(_GetBookNew value)? getBookNew,
     TResult? Function(_GetBookSearh value)? getBookSearch,
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
@@ -534,7 +910,9 @@ class _$GetBookNewImpl implements _GetBookNew {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Init value)? init,
     TResult Function(_Search value)? search,
+    TResult Function(_RemoveHistory value)? removeHistory,
     TResult Function(_GetBookNew value)? getBookNew,
     TResult Function(_GetBookSearh value)? getBookSearch,
     TResult Function(_GetImagePokemon value)? getImagePokemon,
@@ -619,7 +997,9 @@ class _$GetBookSearhImpl implements _GetBookSearh {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() init,
     required TResult Function(String search) search,
+    required TResult Function(String history) removeHistory,
     required TResult Function() getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
@@ -634,7 +1014,9 @@ class _$GetBookSearhImpl implements _GetBookSearh {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? init,
     TResult? Function(String search)? search,
+    TResult? Function(String history)? removeHistory,
     TResult? Function()? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
@@ -649,7 +1031,9 @@ class _$GetBookSearhImpl implements _GetBookSearh {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? init,
     TResult Function(String search)? search,
+    TResult Function(String history)? removeHistory,
     TResult Function()? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
@@ -668,7 +1052,9 @@ class _$GetBookSearhImpl implements _GetBookSearh {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Init value) init,
     required TResult Function(_Search value) search,
+    required TResult Function(_RemoveHistory value) removeHistory,
     required TResult Function(_GetBookNew value) getBookNew,
     required TResult Function(_GetBookSearh value) getBookSearch,
     required TResult Function(_GetImagePokemon value) getImagePokemon,
@@ -683,7 +1069,9 @@ class _$GetBookSearhImpl implements _GetBookSearh {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Init value)? init,
     TResult? Function(_Search value)? search,
+    TResult? Function(_RemoveHistory value)? removeHistory,
     TResult? Function(_GetBookNew value)? getBookNew,
     TResult? Function(_GetBookSearh value)? getBookSearch,
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
@@ -698,7 +1086,9 @@ class _$GetBookSearhImpl implements _GetBookSearh {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Init value)? init,
     TResult Function(_Search value)? search,
+    TResult Function(_RemoveHistory value)? removeHistory,
     TResult Function(_GetBookNew value)? getBookNew,
     TResult Function(_GetBookSearh value)? getBookSearch,
     TResult Function(_GetImagePokemon value)? getImagePokemon,
@@ -763,7 +1153,9 @@ class _$GetImagePokemonImpl implements _GetImagePokemon {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() init,
     required TResult Function(String search) search,
+    required TResult Function(String history) removeHistory,
     required TResult Function() getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
@@ -778,7 +1170,9 @@ class _$GetImagePokemonImpl implements _GetImagePokemon {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? init,
     TResult? Function(String search)? search,
+    TResult? Function(String history)? removeHistory,
     TResult? Function()? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
@@ -793,7 +1187,9 @@ class _$GetImagePokemonImpl implements _GetImagePokemon {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? init,
     TResult Function(String search)? search,
+    TResult Function(String history)? removeHistory,
     TResult Function()? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
@@ -812,7 +1208,9 @@ class _$GetImagePokemonImpl implements _GetImagePokemon {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Init value) init,
     required TResult Function(_Search value) search,
+    required TResult Function(_RemoveHistory value) removeHistory,
     required TResult Function(_GetBookNew value) getBookNew,
     required TResult Function(_GetBookSearh value) getBookSearch,
     required TResult Function(_GetImagePokemon value) getImagePokemon,
@@ -827,7 +1225,9 @@ class _$GetImagePokemonImpl implements _GetImagePokemon {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Init value)? init,
     TResult? Function(_Search value)? search,
+    TResult? Function(_RemoveHistory value)? removeHistory,
     TResult? Function(_GetBookNew value)? getBookNew,
     TResult? Function(_GetBookSearh value)? getBookSearch,
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
@@ -842,7 +1242,9 @@ class _$GetImagePokemonImpl implements _GetImagePokemon {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Init value)? init,
     TResult Function(_Search value)? search,
+    TResult Function(_RemoveHistory value)? removeHistory,
     TResult Function(_GetBookNew value)? getBookNew,
     TResult Function(_GetBookSearh value)? getBookSearch,
     TResult Function(_GetImagePokemon value)? getImagePokemon,
@@ -901,7 +1303,9 @@ class _$RefreshBooksImpl implements _RefreshBooks {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() init,
     required TResult Function(String search) search,
+    required TResult Function(String history) removeHistory,
     required TResult Function() getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
@@ -916,7 +1320,9 @@ class _$RefreshBooksImpl implements _RefreshBooks {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? init,
     TResult? Function(String search)? search,
+    TResult? Function(String history)? removeHistory,
     TResult? Function()? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
@@ -931,7 +1337,9 @@ class _$RefreshBooksImpl implements _RefreshBooks {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? init,
     TResult Function(String search)? search,
+    TResult Function(String history)? removeHistory,
     TResult Function()? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
@@ -950,7 +1358,9 @@ class _$RefreshBooksImpl implements _RefreshBooks {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Init value) init,
     required TResult Function(_Search value) search,
+    required TResult Function(_RemoveHistory value) removeHistory,
     required TResult Function(_GetBookNew value) getBookNew,
     required TResult Function(_GetBookSearh value) getBookSearch,
     required TResult Function(_GetImagePokemon value) getImagePokemon,
@@ -965,7 +1375,9 @@ class _$RefreshBooksImpl implements _RefreshBooks {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Init value)? init,
     TResult? Function(_Search value)? search,
+    TResult? Function(_RemoveHistory value)? removeHistory,
     TResult? Function(_GetBookNew value)? getBookNew,
     TResult? Function(_GetBookSearh value)? getBookSearch,
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
@@ -980,7 +1392,9 @@ class _$RefreshBooksImpl implements _RefreshBooks {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Init value)? init,
     TResult Function(_Search value)? search,
+    TResult Function(_RemoveHistory value)? removeHistory,
     TResult Function(_GetBookNew value)? getBookNew,
     TResult Function(_GetBookSearh value)? getBookSearch,
     TResult Function(_GetImagePokemon value)? getImagePokemon,
@@ -1039,7 +1453,9 @@ class _$InvalidateImpl implements _Invalidate {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() init,
     required TResult Function(String search) search,
+    required TResult Function(String history) removeHistory,
     required TResult Function() getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
@@ -1054,7 +1470,9 @@ class _$InvalidateImpl implements _Invalidate {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? init,
     TResult? Function(String search)? search,
+    TResult? Function(String history)? removeHistory,
     TResult? Function()? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
@@ -1069,7 +1487,9 @@ class _$InvalidateImpl implements _Invalidate {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? init,
     TResult Function(String search)? search,
+    TResult Function(String history)? removeHistory,
     TResult Function()? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
@@ -1088,7 +1508,9 @@ class _$InvalidateImpl implements _Invalidate {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Init value) init,
     required TResult Function(_Search value) search,
+    required TResult Function(_RemoveHistory value) removeHistory,
     required TResult Function(_GetBookNew value) getBookNew,
     required TResult Function(_GetBookSearh value) getBookSearch,
     required TResult Function(_GetImagePokemon value) getImagePokemon,
@@ -1103,7 +1525,9 @@ class _$InvalidateImpl implements _Invalidate {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Init value)? init,
     TResult? Function(_Search value)? search,
+    TResult? Function(_RemoveHistory value)? removeHistory,
     TResult? Function(_GetBookNew value)? getBookNew,
     TResult? Function(_GetBookSearh value)? getBookSearch,
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
@@ -1118,7 +1542,9 @@ class _$InvalidateImpl implements _Invalidate {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Init value)? init,
     TResult Function(_Search value)? search,
+    TResult Function(_RemoveHistory value)? removeHistory,
     TResult Function(_GetBookNew value)? getBookNew,
     TResult Function(_GetBookSearh value)? getBookSearch,
     TResult Function(_GetImagePokemon value)? getImagePokemon,
@@ -1178,7 +1604,9 @@ class _$GetScrollControllerImpl implements _GetScrollController {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() started,
+    required TResult Function() init,
     required TResult Function(String search) search,
+    required TResult Function(String history) removeHistory,
     required TResult Function() getBookNew,
     required TResult Function(String search) getBookSearch,
     required TResult Function() getImagePokemon,
@@ -1193,7 +1621,9 @@ class _$GetScrollControllerImpl implements _GetScrollController {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? started,
+    TResult? Function()? init,
     TResult? Function(String search)? search,
+    TResult? Function(String history)? removeHistory,
     TResult? Function()? getBookNew,
     TResult? Function(String search)? getBookSearch,
     TResult? Function()? getImagePokemon,
@@ -1208,7 +1638,9 @@ class _$GetScrollControllerImpl implements _GetScrollController {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? started,
+    TResult Function()? init,
     TResult Function(String search)? search,
+    TResult Function(String history)? removeHistory,
     TResult Function()? getBookNew,
     TResult Function(String search)? getBookSearch,
     TResult Function()? getImagePokemon,
@@ -1227,7 +1659,9 @@ class _$GetScrollControllerImpl implements _GetScrollController {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Started value) started,
+    required TResult Function(_Init value) init,
     required TResult Function(_Search value) search,
+    required TResult Function(_RemoveHistory value) removeHistory,
     required TResult Function(_GetBookNew value) getBookNew,
     required TResult Function(_GetBookSearh value) getBookSearch,
     required TResult Function(_GetImagePokemon value) getImagePokemon,
@@ -1242,7 +1676,9 @@ class _$GetScrollControllerImpl implements _GetScrollController {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Started value)? started,
+    TResult? Function(_Init value)? init,
     TResult? Function(_Search value)? search,
+    TResult? Function(_RemoveHistory value)? removeHistory,
     TResult? Function(_GetBookNew value)? getBookNew,
     TResult? Function(_GetBookSearh value)? getBookSearch,
     TResult? Function(_GetImagePokemon value)? getImagePokemon,
@@ -1257,7 +1693,9 @@ class _$GetScrollControllerImpl implements _GetScrollController {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Started value)? started,
+    TResult Function(_Init value)? init,
     TResult Function(_Search value)? search,
+    TResult Function(_RemoveHistory value)? removeHistory,
     TResult Function(_GetBookNew value)? getBookNew,
     TResult Function(_GetBookSearh value)? getBookSearch,
     TResult Function(_GetImagePokemon value)? getImagePokemon,

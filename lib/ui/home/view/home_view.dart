@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:responsive_framework/responsive_framework.dart';
 
+import '../../../core/common/services/local_storage.dart';
 import '../../../core/home/domain/usecases/home_usecases.dart';
 import '../../../injectable_dependency.dart';
 import '../../navigation/cubit/home_navigation.dart';
@@ -21,9 +22,8 @@ class HomeView extends StatelessWidget {
             lazy: false,
             create: (context) => HomeBloc(
               homeUseCase: getIt<HomeUseCase>(),
-            )
-              ..add(const HomeEvent.getBookNew())
-              ..add(const HomeEvent.initScrollController()),
+              localStorage: getIt<LocalStorage>(),
+            )..add(const HomeEvent.init()),
           ),
           BlocProvider.value(
             value: HomeNavigation(
