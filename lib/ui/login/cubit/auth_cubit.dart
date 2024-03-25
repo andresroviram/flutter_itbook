@@ -9,7 +9,7 @@ part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  late DatabaseManager _localDatabase;
+  late final DatabaseManager _localDatabase;
   final LocalStorage _localStorage;
 
   AuthCubit({

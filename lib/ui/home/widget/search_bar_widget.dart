@@ -5,8 +5,13 @@ import 'package:go_router/go_router.dart';
 import '../bloc/home/home_bloc.dart';
 
 class SearchBarWidget extends StatefulWidget {
-  const SearchBarWidget({super.key, required this.constraints});
+  const SearchBarWidget({
+    super.key,
+    required this.constraints,
+    this.voidCallback,
+  });
   final BoxConstraints constraints;
+  final VoidCallback? voidCallback;
 
   @override
   State<SearchBarWidget> createState() => _SearchBarWidgetState();
@@ -47,6 +52,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
         viewOnSubmitted: (value) {
           homeBloc.add(HomeEvent.search(search: value.trim()));
           searchController.closeView(value.trim());
+          widget.voidCallback?.call();
         },
         builder: (BuildContext context, SearchController controller) =>
             SearchBar(
@@ -88,11 +94,13 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
               onTap: () {
                 homeBloc.add(HomeEvent.search(search: history));
                 controller.closeView(history);
+                widget.voidCallback?.call();
               },
               trailing: TextButton(
                 onPressed: () {
                   homeBloc.add(HomeEvent.removeHistory(history));
                   controller.closeView(history);
+                  widget.voidCallback?.call();
                 },
                 style: TextButton.styleFrom(
                   elevation: 2,

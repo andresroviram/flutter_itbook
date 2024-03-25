@@ -104,10 +104,11 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
 
   Future<void> _getBookSerch(
       _GetBookSearh event, Emitter<HomeState> emit) async {
-    final historyList = await _localStorage.getHistoryList();
+    final historyList = state.historyList.toList();
     final newList = <String>[];
 
     final isExist = historyList.contains(event.search);
+    debugPrint('lista: ${historyList.length}');
 
     if (!isExist) {
       if (state.historyList.length < 5) {
@@ -115,11 +116,19 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
         newList.addAll(historyList);
       } else {
         newList.insert(0, event.search);
-        historyList.toList().removeLast();
+        historyList.removeLast();
         newList.addAll(historyList);
       }
     } else {
-      newList.addAll(historyList);
+      if (state.historyList.length < 5) {
+        newList.insert(0, event.search);
+        historyList.remove(event.search);
+        newList.addAll(historyList);
+      } else {
+        newList.insert(0, event.search);
+        historyList.remove(event.search);
+        newList.addAll(historyList);
+      }
     }
     _localStorage.saveHistoryList(newList);
 

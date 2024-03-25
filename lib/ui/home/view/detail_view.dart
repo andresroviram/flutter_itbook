@@ -8,7 +8,7 @@ import '../../../injectable_dependency.dart';
 import '../../navigation/cubit/router_manager.dart';
 import '../bloc/detail/detail_bloc.dart';
 import '../widget/descripction_shimmer.dart';
-import '../widget/shimmer.dart';
+import '../widget/container_shimmer.dart';
 
 class DetailView extends StatelessWidget {
   const DetailView({super.key, required this.heroTag, required this.isbn13});

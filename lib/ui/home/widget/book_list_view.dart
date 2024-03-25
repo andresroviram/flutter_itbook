@@ -6,7 +6,7 @@ import '../../../core/home/domain/entities/entities.dart';
 import '../../navigation/cubit/home_navigation.dart';
 import '../bloc/home/home_bloc.dart';
 import '../view/detail_view.dart';
-import 'shimmer.dart';
+import 'container_shimmer.dart';
 
 class BookListView extends StatelessWidget {
   const BookListView({super.key});
@@ -56,9 +56,14 @@ class BookListView extends StatelessWidget {
               child: Container(
                 padding: const EdgeInsets.all(20.0),
                 decoration: BoxDecoration(
-                  border: Border.all(
-                    color: Theme.of(context).colorScheme.secondary,
-                  ),
+                  color: Theme.of(context).colorScheme.primary.withOpacity(0.1),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Theme.of(context).focusColor.withOpacity(0.05),
+                      offset: const Offset(0, 5),
+                      blurRadius: 5,
+                    )
+                  ],
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: Column(
@@ -84,14 +89,13 @@ class BookListView extends StatelessWidget {
                         horizontal: 10,
                         vertical: 20,
                       ),
-                      child: Hero(
-                        tag: '$heroTag${book.isbn13}',
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(20),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Hero(
+                          tag: '$heroTag${book.isbn13}',
                           child: book.isNull
                               ? const ContainerShimmer(
                                   height: 250,
-                                  width: 195,
                                 )
                               : CachedNetworkImage(
                                   filterQuality: FilterQuality.medium,
@@ -102,7 +106,6 @@ class BookListView extends StatelessWidget {
                                   placeholder: (context, url) =>
                                       const ContainerShimmer(
                                     height: 250,
-                                    width: 195,
                                   ),
                                   errorWidget: (context, url, error) =>
                                       Container(

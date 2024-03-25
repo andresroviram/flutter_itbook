@@ -40,27 +40,33 @@ class HomeView extends StatelessWidget {
     final breakpoint = ResponsiveBreakpoints.of(context).breakpoint;
     OverlayEntry loader = context.read<HomeBloc>().loader;
 
-    return Scaffold(
-      body: BlocListener<HomeBloc, HomeState>(
-        listener: (context, state) {
-          if (state.failure != null) {
-            ShowFailure.instance.mapFailuresToNotification(
-              context,
-              failure: state.failure!,
-            );
-            context.read<HomeBloc>().add(const HomeEvent.invalidate());
-          }
+    return Listener(
+      behavior: HitTestBehavior.opaque,
+      onPointerDown: (_) {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: Scaffold(
+        body: BlocListener<HomeBloc, HomeState>(
+          listener: (context, state) {
+            if (state.failure != null) {
+              ShowFailure.instance.mapFailuresToNotification(
+                context,
+                failure: state.failure!,
+              );
+              context.read<HomeBloc>().add(const HomeEvent.invalidate());
+            }
 
-          if (state.isLoading) {
-            Overlay.of(context).insert(loader);
-          } else {
-            if (loader.mounted) loader.remove();
-          }
-        },
-        child: switch (breakpoint.name) {
-          MOBILE => const HomeMovil(),
-          (_) => const HomeWeb(),
-        },
+            if (state.isLoading) {
+              Overlay.of(context).insert(loader);
+            } else {
+              if (loader.mounted) loader.remove();
+            }
+          },
+          child: switch (breakpoint.name) {
+            MOBILE => const HomeMovil(),
+            (_) => const HomeWeb(),
+          },
+        ),
       ),
     );
   }

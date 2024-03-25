@@ -23,9 +23,9 @@ A new Flutter project.
 <p align="center">
 <img src="screenshots/Screenshot_1711089737.png" width="30%">
 <img src="screenshots/Screenshot_1711089671.png" width="30%">
-<img src="screenshots/Screenshot_1711089683.png" width="30%">
-<img src="screenshots/Screenshot_1711329507.png" width="30%">
-<img src="screenshots/Screenshot_1711329571.png" width="30%">
+<img src="screenshots/Screenshot_1711349111.png" width="30%">
+<img src="screenshots/Screenshot_1711349101.png" width="30%">
+<img src="screenshots/Screenshot_1711349327.png" width="30%">
 <img src="screenshots/Screenshot_1711089700.png" width="30%">
 </p>
 

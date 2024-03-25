@@ -4,6 +4,7 @@ import 'package:inlaze/ui/home/bloc/home/home_bloc.dart';
 
 import '../../navigation/cubit/home_navigation.dart';
 import '../view/detail_view.dart';
+import 'book_poster.dart';
 
 class SearchWidget extends StatelessWidget {
   const SearchWidget({super.key});
@@ -17,17 +18,16 @@ class SearchWidget extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20),
+              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
               child: Text(
                 'Search: ${state.searchResult}',
               ),
             ),
             SizedBox(
-              height: 255,
-              child: ListView.builder(
+              height: 230,
+              child: ListView.separated(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 10,
-                  vertical: 5,
                 ),
                 scrollDirection: Axis.horizontal,
                 physics: const BouncingScrollPhysics(),
@@ -43,90 +43,77 @@ class SearchWidget extends StatelessWidget {
                           );
                     },
                     child: Container(
-                      margin: const EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        border: Border.all(
-                          color: Theme.of(context).colorScheme.secondary,
-                        ),
+                        color: Theme.of(context)
+                            .colorScheme
+                            .primary
+                            .withOpacity(0.1),
+                        boxShadow: [
+                          BoxShadow(
+                            color:
+                                Theme.of(context).focusColor.withOpacity(0.05),
+                            offset: const Offset(0, 5),
+                            blurRadius: 5,
+                          )
+                        ],
                         borderRadius: BorderRadius.circular(20),
                       ),
-                      width: 150,
+                      width: 160,
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Hero(
-                            tag: '$heroTag${book.isbn13}',
-                            child: ClipRRect(
-                              borderRadius: BorderRadius.circular(20),
-                              child: Image.network(
-                                book.image ?? '',
-                                filterQuality: FilterQuality.high,
+                          ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20),
+                            ),
+                            child: Hero(
+                              tag: '$heroTag${book.isbn13}',
+                              child: BookPoster(
                                 fit: BoxFit.cover,
-                                loadingBuilder:
-                                    (context, child, loadingProgress) {
-                                  if (loadingProgress == null) {
-                                    return child;
-                                  }
-                                  return Center(
-                                    child: CircularProgressIndicator(
-                                      value:
-                                          loadingProgress.expectedTotalBytes !=
-                                                  null
-                                              ? loadingProgress
-                                                      .cumulativeBytesLoaded /
-                                                  loadingProgress
-                                                      .expectedTotalBytes!
-                                              : null,
-                                    ),
-                                  );
-                                },
-                                errorBuilder: (context, error, stackTrace) =>
-                                    const Center(
-                                  child: Icon(Icons.error),
-                                ),
+                                height: 170,
+                                imagePath: book.image,
                               ),
                             ),
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(
                               horizontal: 10,
+                              vertical: 7,
                             ),
-                            child: Align(
-                              alignment: Alignment.centerLeft,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    book.title ?? '',
-                                    softWrap: true,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w500,
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .secondary,
-                                    ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  book.title ?? '',
+                                  softWrap: true,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w500,
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
                                   ),
-                                  Text(
-                                    book.price.toString(),
-                                    softWrap: true,
-                                    maxLines: 1,
-                                    overflow: TextOverflow.ellipsis,
-                                    style: TextStyle(
-                                      color: Theme.of(context)
-                                          .colorScheme
-                                          .secondary,
-                                    ),
+                                ),
+                                Text(
+                                  book.price.toString(),
+                                  softWrap: true,
+                                  maxLines: 1,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: TextStyle(
+                                    color:
+                                        Theme.of(context).colorScheme.secondary,
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
                       ),
                     ),
                   );
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return const SizedBox(width: 20);
                 },
               ),
             ),

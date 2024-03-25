@@ -17,7 +17,9 @@ class HomeMovil extends StatelessWidget {
           constraints: BoxConstraints(minHeight: constraints.maxHeight),
           child: Column(
             children: [
-              SearchBarWidget(constraints: constraints),
+              SearchBarWidget(
+                constraints: constraints,
+              ),
               Expanded(
                 child: BlocBuilder<HomeBloc, HomeState>(
                   builder: (context, state) {
@@ -31,7 +33,7 @@ class HomeMovil extends StatelessWidget {
                           const Padding(
                             padding: EdgeInsets.symmetric(
                               horizontal: 20,
-                              vertical: 5,
+                              vertical: 10,
                             ),
                             child: Text(
                               'Books',

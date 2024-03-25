@@ -10,12 +10,13 @@ class ContainerShimmer extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Shimmer.fromColors(
-        baseColor: Theme.of(context).hintColor,
-        highlightColor: Theme.of(context).hintColor.withOpacity(0.5),
+        baseColor: Theme.of(context).colorScheme.secondary.withOpacity(0.4),
+        highlightColor:
+            Theme.of(context).colorScheme.secondary.withOpacity(0.6),
         child: Container(
           width: width ?? double.infinity,
           height: height,
-          color: Theme.of(context).hintColor.withOpacity(0.2),
+          color: Theme.of(context).colorScheme.secondary.withOpacity(0.4),
         ),
       ),
     );
