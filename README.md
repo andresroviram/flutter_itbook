@@ -28,6 +28,7 @@ A new Flutter project.
 ## Clean Architecture Diagram
 
 ![Image](screenshots/diagram.png)
+![Image](screenshots/folders_structure.png)
 
 
 

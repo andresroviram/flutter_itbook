@@ -8,9 +8,9 @@ import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:url_strategy/url_strategy.dart';
 
-import 'core/common/services/analytic.dart';
-import 'core/common/services/bloc_observer.dart';
-import 'injectable_dependency.dart';
+import 'core/services/analytic.dart';
+import 'core/services/bloc_observer.dart';
+import 'config/injectable/injectable_dependency.dart';
 import 'providers.dart';
 
 void main() async {

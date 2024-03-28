@@ -6,8 +6,8 @@ import 'package:go_router/go_router.dart';
 
 import 'package:responsive_framework/responsive_framework.dart';
 
-import 'core/common/theme/theme.dart';
-import 'ui/navigation/cubit/router_manager.dart';
+import 'config/theme/theme.dart';
+import 'config/routes/cubit/router_manager.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
