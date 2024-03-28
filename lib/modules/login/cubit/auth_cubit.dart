@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import '../../../config/database/database_manager.dart';
@@ -43,13 +44,13 @@ class AuthCubit extends Cubit<AuthState> {
           orElse: () => User(name: '', password: ''));
       if ((user?.name.isNotEmpty ?? false) &&
           (user?.password.isNotEmpty ?? false)) {
-        emit(state.copyWith(error: true, message: "Existing User"));
+        emit(state.copyWith(error: true, message: 'existing_user'.tr()));
         return;
       } else {
         User user = User(name: username, password: password);
         final id = await _localDatabase.state?.userDao.insertUser(user);
         user = User(name: username, password: password, id: id);
-        emit(state.copyWith(error: true, message: "Created User"));
+        emit(state.copyWith(error: true, message: 'create_user'.tr()));
       }
     }
   }

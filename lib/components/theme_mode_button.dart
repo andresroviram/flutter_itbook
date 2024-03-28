@@ -1,4 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 enum _Variant {
@@ -24,12 +25,12 @@ class ThemeModeButton extends StatelessWidget {
       Brightness.light => (
           Icons.dark_mode_outlined,
           AdaptiveTheme.of(context).setDark,
-          'Switch to dark'
+          'switch_to_dark'.tr()
         ),
       Brightness.dark => (
           Icons.light_mode_outlined,
           AdaptiveTheme.of(context).setLight,
-          'Switch to light'
+          'switch_to_light'.tr()
         )
     };
 

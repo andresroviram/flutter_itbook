@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -181,7 +182,7 @@ class _NavigationRail extends StatelessWidget {
         for (final item in NavigationItem.values)
           NavigationRailDestination(
             icon: Icon(item.iconData),
-            label: Text(item.label),
+            label: Text(item.name.tr()),
           ),
       ],
       labelType: labelType,
@@ -222,14 +223,14 @@ class _NavigationDrawer extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 16, 16, 10),
           child: Text(
-            'Dashboard',
+            'dashboard'.tr(),
             style: Theme.of(context).textTheme.titleSmall,
           ),
         ),
         for (final item in NavigationItem.values)
           NavigationDrawerDestination(
             icon: Icon(item.iconData),
-            label: Text(item.label),
+            label: Text(item.name.tr()),
           ),
         // const Padding(
         //   padding: EdgeInsets.fromLTRB(28, 16, 28, 10),
@@ -294,7 +295,7 @@ class _ScaffoldWithNavigationBar extends StatelessWidget {
           for (final item in NavigationItem.values)
             NavigationDestination(
               icon: Icon(item.iconData),
-              label: item.label,
+              label: item.name.tr(),
             ),
         ],
       ),

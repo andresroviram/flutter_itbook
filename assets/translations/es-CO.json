@@ -1,0 +1,14 @@
+{
+    "home": "Inicio",
+    "dashboard": "Tablero",
+    "favorites": "Favoritos",
+    "settings": "Ajustes",
+    "create_user": "Crear usuario",
+    "username": "Nombre de usuario",
+    "password": "Contraseña",
+    "restore_password": "Recuperar contraseña",
+    "existing_user": "Usuario existente",
+    "login": "Iniciar sesión",
+    "switch_to_dark": "Modo oscuro",
+    "switch_to_light": "Modo claro"
+}

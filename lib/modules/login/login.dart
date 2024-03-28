@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -50,9 +51,9 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-    return Listener(
+    return GestureDetector(
       behavior: HitTestBehavior.opaque,
-      onPointerDown: (_) {
+      onTap: () {
         FocusManager.instance.primaryFocus?.unfocus();
       },
       child: Scaffold(
@@ -63,7 +64,7 @@ class _LoginViewState extends State<LoginView> {
               _passwordController.text,
             );
           },
-          child: const Text('Create User'),
+          child: Text('create_user'.tr()),
         ),
         body: BlocConsumer<AuthCubit, AuthState>(
           listener: (context, state) {
@@ -102,31 +103,31 @@ class _LoginViewState extends State<LoginView> {
                       const SizedBox(height: 20),
                       TextField(
                         controller: _usernameController,
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(
+                        decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.symmetric(
                             horizontal: 20,
                             vertical: 15,
                           ),
-                          border: OutlineInputBorder(
+                          border: const OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.all(Radius.circular(30))),
-                          labelText: 'Username',
+                          labelText: 'username'.tr(),
                         ),
                       ),
                       const SizedBox(height: 20),
                       TextField(
                         controller: _passwordController,
-                        decoration: const InputDecoration(
-                          contentPadding: EdgeInsets.symmetric(
+                        decoration: InputDecoration(
+                          contentPadding: const EdgeInsets.symmetric(
                             horizontal: 20,
                             vertical: 15,
                           ),
-                          border: OutlineInputBorder(
+                          border: const OutlineInputBorder(
                             borderRadius: BorderRadius.all(
                               Radius.circular(30),
                             ),
                           ),
-                          labelText: 'Password',
+                          labelText: 'password'.tr(),
                         ),
                         obscureText: true,
                       ),
@@ -135,7 +136,7 @@ class _LoginViewState extends State<LoginView> {
                         alignment: Alignment.centerLeft,
                         child: TextButton(
                           onPressed: () {},
-                          child: const Text('Restore password'),
+                          child: Text('restore_password'.tr()),
                         ),
                       ),
                       const SizedBox(height: 20),
@@ -150,7 +151,7 @@ class _LoginViewState extends State<LoginView> {
                                   _passwordController.text,
                                 );
                               },
-                              child: const Text('Log in'),
+                              child: Text('login'.tr()),
                             ),
                           ),
                         ],

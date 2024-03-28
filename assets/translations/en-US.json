@@ -1,0 +1,14 @@
+{
+    "home": "Home",
+    "dashboard": "Dashboard",
+    "favorites": "Favorites",
+    "settings": "Settings",
+    "create_user": "Create User",
+    "username": "Username",
+    "password": "Password",
+    "restore_password": "Restore password",
+    "existing_user": "Existing User",
+    "login": "Login",
+    "switch_to_dark": "Switch to dark",
+    "switch_to_light": "Switch to light"
+}
