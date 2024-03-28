@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inlaze/modules/home/presentation/widget/search_widget.dart';
@@ -20,24 +21,29 @@ class HomeMovil extends StatelessWidget {
         Expanded(
           child: BlocBuilder<HomeBloc, HomeState>(
             builder: (context, state) {
-              return SingleChildScrollView(
-                controller: scrollController,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    if (state.searchBooks.isNotEmpty) ...[const SearchWidget()],
-                    const Padding(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 20,
-                        vertical: 10,
+              return RefreshIndicator(
+                onRefresh: context.read<HomeBloc>().refreshList,
+                child: SingleChildScrollView(
+                  controller: scrollController,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: <Widget>[
+                      if (state.searchBooks.isNotEmpty) ...[
+                        const SearchWidget()
+                      ],
+                      Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 20,
+                          vertical: 10,
+                        ),
+                        child: Text(
+                          'books'.tr(),
+                          textAlign: TextAlign.left,
+                        ),
                       ),
-                      child: Text(
-                        'Books',
-                        textAlign: TextAlign.left,
-                      ),
-                    ),
-                    const BookListView(),
-                  ],
+                      const BookListView(),
+                    ],
+                  ),
                 ),
               );
             },

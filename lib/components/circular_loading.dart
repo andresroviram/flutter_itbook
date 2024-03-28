@@ -50,7 +50,8 @@ class CircularLoadingWidgetState extends State<CircularLoadingWidget>
         height: animation.value,
         child: Center(
           child: CircularProgressIndicator(
-              color: Theme.of(context).colorScheme.secondary),
+            color: Theme.of(context).hintColor,
+          ),
         ),
       ),
     );

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inlaze/modules/home/presentation/bloc/home/home_bloc.dart';
@@ -20,7 +21,7 @@ class SearchWidget extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
               child: Text(
-                'Search: ${state.searchResult}',
+                '${'search'.tr()}: ${state.searchResult}',
               ),
             ),
             SizedBox(
@@ -88,10 +89,8 @@ class SearchWidget extends StatelessWidget {
                                   softWrap: true,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontWeight: FontWeight.w500,
-                                    color:
-                                        Theme.of(context).colorScheme.secondary,
                                   ),
                                 ),
                                 Text(
@@ -99,10 +98,7 @@ class SearchWidget extends StatelessWidget {
                                   softWrap: true,
                                   maxLines: 1,
                                   overflow: TextOverflow.ellipsis,
-                                  style: TextStyle(
-                                    color:
-                                        Theme.of(context).colorScheme.secondary,
-                                  ),
+                                  style: const TextStyle(),
                                 ),
                               ],
                             ),

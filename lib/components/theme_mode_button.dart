@@ -19,7 +19,6 @@ class ThemeModeButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
     final brightness = Theme.of(context).brightness;
     final (iconData, action, actionLabel) = switch (brightness) {
       Brightness.light => (
@@ -44,8 +43,9 @@ class ThemeModeButton extends StatelessWidget {
           icon: Icon(iconData),
           label: Text(actionLabel),
           style: OutlinedButton.styleFrom(
+            backgroundColor: theme.shadowColor,
             side: BorderSide(
-              color: colorScheme.primary.withOpacity(0.5),
+              color: theme.hintColor,
             ),
           ),
         )

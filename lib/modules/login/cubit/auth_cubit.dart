@@ -36,7 +36,7 @@ class AuthCubit extends Cubit<AuthState> {
     if (!validate(username, password)) {
       emit(state.copyWith(
         error: true,
-        message: "Get into: Username*, Password*",
+        message: 'get_into'.tr(),
       ));
     } else {
       List<User>? users = await _localDatabase.state?.userDao.readAll();
@@ -59,7 +59,7 @@ class AuthCubit extends Cubit<AuthState> {
     if (!validate(username, password)) {
       emit(state.copyWith(
         error: true,
-        message: "Get into: Username*, Password*",
+        message: 'get_into'.tr(),
       ));
       return;
     }
@@ -67,7 +67,7 @@ class AuthCubit extends Cubit<AuthState> {
     final user = users?.firstWhere((element) => element.name == username,
         orElse: () => User(name: '', password: ''));
     if ((user?.name.isEmpty ?? false) && (user?.password.isEmpty ?? false)) {
-      emit(state.copyWith(error: true, message: "User Not found"));
+      emit(state.copyWith(error: true, message: 'not_found_user'.tr()));
       return;
     }
     if (user?.password == password) {
@@ -75,7 +75,7 @@ class AuthCubit extends Cubit<AuthState> {
       _localStorage.saveUserLoginPass(password);
       emit(state.copyWith(success: true));
     } else {
-      emit(state.copyWith(error: true, message: "Invalid credentials"));
+      emit(state.copyWith(error: true, message: 'invalid_credentials'.tr()));
     }
   }
 

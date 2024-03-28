@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -138,10 +139,7 @@ class DetailView extends StatelessWidget {
                                                 state.book.subtitle ?? '',
                                                 textAlign: TextAlign.center,
                                                 maxLines: 6,
-                                                style: TextStyle(
-                                                  color: Theme.of(context)
-                                                      .colorScheme
-                                                      .secondary,
+                                                style: const TextStyle(
                                                   fontWeight: FontWeight.w300,
                                                   fontSize: 13,
                                                 ),
@@ -154,12 +152,9 @@ class DetailView extends StatelessWidget {
                                                       .spaceBetween,
                                               children: [
                                                 Text(
-                                                  'Pages: ${state.book.pages ?? ''}',
+                                                  '${'pages'.tr()}: ${state.book.pages ?? ''}',
                                                   maxLines: 6,
-                                                  style: TextStyle(
-                                                    color: Theme.of(context)
-                                                        .colorScheme
-                                                        .secondary,
+                                                  style: const TextStyle(
                                                     fontWeight: FontWeight.w300,
                                                     fontSize: 12,
                                                   ),
@@ -168,10 +163,7 @@ class DetailView extends StatelessWidget {
                                                   state.book.year ?? '',
                                                   textAlign: TextAlign.center,
                                                   maxLines: 6,
-                                                  style: TextStyle(
-                                                    color: Theme.of(context)
-                                                        .colorScheme
-                                                        .secondary,
+                                                  style: const TextStyle(
                                                     fontWeight: FontWeight.w300,
                                                     fontSize: 12,
                                                   ),
@@ -185,10 +177,7 @@ class DetailView extends StatelessWidget {
                                           state.book.desc ?? '',
                                           maxLines: 6,
                                           textAlign: TextAlign.justify,
-                                          style: TextStyle(
-                                            color: Theme.of(context)
-                                                .colorScheme
-                                                .secondary,
+                                          style: const TextStyle(
                                             fontWeight: FontWeight.w300,
                                           ),
                                         ),
@@ -198,12 +187,9 @@ class DetailView extends StatelessWidget {
                                               MainAxisAlignment.spaceBetween,
                                           children: [
                                             Text(
-                                              'Price: ${state.book.price ?? ''}',
+                                              '${'price'.tr()}: ${state.book.price ?? ''}',
                                               maxLines: 6,
-                                              style: TextStyle(
-                                                color: Theme.of(context)
-                                                    .colorScheme
-                                                    .secondary,
+                                              style: const TextStyle(
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 16,
                                               ),
@@ -231,23 +217,17 @@ class DetailView extends StatelessWidget {
                                               CrossAxisAlignment.start,
                                           children: [
                                             Text(
-                                              'Publisher: ${state.book.publisher ?? ''}',
+                                              '${'publisher'.tr()}: ${state.book.publisher ?? ''}',
                                               maxLines: 6,
-                                              style: TextStyle(
-                                                color: Theme.of(context)
-                                                    .colorScheme
-                                                    .secondary,
+                                              style: const TextStyle(
                                                 fontWeight: FontWeight.w300,
                                                 fontSize: 12,
                                               ),
                                             ),
                                             Text(
-                                              'Authors: ${state.book.authors ?? ''}',
+                                              '${'authors'.tr()}: ${state.book.authors ?? ''}',
                                               maxLines: 6,
-                                              style: TextStyle(
-                                                color: Theme.of(context)
-                                                    .colorScheme
-                                                    .secondary,
+                                              style: const TextStyle(
                                                 fontWeight: FontWeight.w300,
                                                 fontSize: 12,
                                               ),

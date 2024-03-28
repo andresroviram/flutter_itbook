@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -59,7 +60,6 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
           icon: const Icon(Icons.arrow_back),
         ),
         viewOnSubmitted: (value) {
-          debugPrint('sssssssssssssr');
           homeBloc.add(HomeEvent.search(search: value.trim()));
           searchController.closeView(value.trim());
           widget.voidCallback?.call();
@@ -71,7 +71,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
             maxWidth: double.infinity,
             minHeight: 50,
           ),
-          hintText: 'Search books',
+          hintText: 'search_books'.tr(),
           padding: const MaterialStatePropertyAll<EdgeInsets>(
               EdgeInsets.symmetric(horizontal: 16.0)),
           onTap: () {
@@ -83,7 +83,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
           leading: const Icon(Icons.search),
           trailing: <Widget>[
             Tooltip(
-              message: 'Clear',
+              message: 'clear'.tr(),
               child: IconButton(
                 onPressed: () {
                   setState(() => searchController.clear());
@@ -116,7 +116,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
                   elevation: 2,
                   padding: const EdgeInsets.symmetric(horizontal: 5),
                 ),
-                child: const Text('quitar'),
+                child: Text('remove'.tr()),
               ),
             );
           },

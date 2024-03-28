@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -13,6 +14,7 @@ class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      forceMaterialTransparency: true,
       title: const NavigationTitle(),
       leading: IconButton(
         color: Colors.black,
@@ -30,7 +32,7 @@ class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
         const ThemeModeButton.icon(),
         PopupMenuButton<int>(
           icon: const Icon(Icons.account_circle_outlined),
-          tooltip: 'profile',
+          tooltip: 'profile'.tr(),
           offset: const Offset(0, 50),
           onSelected: (value) {
             if (value == 0) {
@@ -40,14 +42,14 @@ class NavigationAppBar extends StatelessWidget implements PreferredSizeWidget {
           itemBuilder: (context) => [
             PopupMenuItem(
               value: 0,
-              child: const Row(
+              child: Row(
                 children: [
-                  Icon(
+                  const Icon(
                     Icons.logout,
                     size: 18,
                   ),
-                  SizedBox(width: 5),
-                  Text('Log Out'),
+                  const SizedBox(width: 5),
+                  Text('logout'.tr()),
                 ],
               ),
               onTap: () {

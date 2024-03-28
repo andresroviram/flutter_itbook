@@ -40,7 +40,7 @@ class Overloading {
         height: size.height,
         width: size.width,
         child: Material(
-          color: Theme.of(context).colorScheme.secondary.withOpacity(0.3),
+          color: Theme.of(context).hintColor.withOpacity(0.1),
           child: const CircularLoadingWidget(height: 200),
         ),
       );
