@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:inlaze/core/utils/extension/extension.dart';
 
 import '../bloc/home/home_bloc.dart';
 
@@ -45,7 +46,7 @@ class _SearchBarWidgetState extends State<SearchBarWidget> {
         vertical: 20,
       ),
       child: SearchAnchor(
-        viewBackgroundColor: Theme.of(context).colorScheme.background,
+        viewBackgroundColor: context.colorScheme.background,
         viewShape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(10),

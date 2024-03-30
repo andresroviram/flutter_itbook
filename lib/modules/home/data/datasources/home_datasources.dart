@@ -1,7 +1,5 @@
 import 'package:injectable/injectable.dart';
 import 'package:inlaze/core/utils/extension/extension.dart';
-import 'package:inlaze/core/utils/extension/http.dart';
-
 import '../../../../core/services/services.dart';
 import '../end_points.dart';
 import '../models/models.dart';

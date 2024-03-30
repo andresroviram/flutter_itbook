@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../components/theme_mode_button.dart';
-import '../../../modules/login/login.dart';
+import '../../../modules/login/presentation/login.dart';
 import '../cubit/router_manager.dart';
 import 'navigation_title.dart';
 

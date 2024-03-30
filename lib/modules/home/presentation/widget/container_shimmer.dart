@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:inlaze/core/utils/extension/extension.dart';
 import 'package:shimmer/shimmer.dart';
 
 class ContainerShimmer extends StatelessWidget {
@@ -8,15 +9,15 @@ class ContainerShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = context.colorScheme;
     return Center(
       child: Shimmer.fromColors(
-        baseColor: Theme.of(context).colorScheme.secondary.withOpacity(0.4),
-        highlightColor:
-            Theme.of(context).colorScheme.secondary.withOpacity(0.6),
+        baseColor: colorScheme.secondary.withOpacity(0.4),
+        highlightColor: colorScheme.secondary.withOpacity(0.6),
         child: Container(
           width: width ?? double.infinity,
           height: height,
-          color: Theme.of(context).colorScheme.secondary.withOpacity(0.4),
+          color: colorScheme.secondary.withOpacity(0.4),
         ),
       ),
     );

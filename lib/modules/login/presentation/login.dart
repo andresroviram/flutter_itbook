@@ -2,11 +2,11 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../config/database/database_manager.dart';
-import '../../core/services/local_storage.dart';
-import '../../config/injectable/injectable_dependency.dart';
-import '../home/presentation/view/home_view.dart';
-import '../../config/routes/cubit/router_manager.dart';
+import '../../../core/services/local_storage.dart';
+import '../../../config/injectable/injectable_dependency.dart';
+import '../../home/presentation/view/home_view.dart';
+import '../../../config/routes/cubit/router_manager.dart';
+import '../domain/usecases/login_usecases.dart';
 import 'cubit/auth_cubit.dart';
 
 class LoginView extends StatefulWidget {
@@ -18,8 +18,8 @@ class LoginView extends StatefulWidget {
   static Widget create() => BlocProvider(
         lazy: false,
         create: (context) => AuthCubit(
-          localDatabase: context.read<DatabaseManager>(),
           localStorage: getIt<LocalStorage>(),
+          loginUseCase: getIt<LoginUseCase>(),
         ),
         child: const LoginView(),
       );
@@ -75,7 +75,7 @@ class _LoginViewState extends State<LoginView> {
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
                   content: Text(state.message),
-                  backgroundColor: Colors.white,
+                  backgroundColor: Theme.of(context).hintColor,
                 ),
               );
               _authCubit.invalidate();

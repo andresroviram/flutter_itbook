@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../components/circular_loading.dart';
-import '../../modules/login/login.dart';
+import '../../modules/login/presentation/login.dart';
 import '../../config/routes/cubit/router_manager.dart';
 import '../error/error.dart';
 import 'notifications.dart';

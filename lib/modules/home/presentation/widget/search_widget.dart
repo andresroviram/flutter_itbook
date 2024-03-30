@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inlaze/core/utils/extension/extension.dart';
 import 'package:inlaze/modules/home/presentation/bloc/home/home_bloc.dart';
 
 import '../../navigation.dart';
@@ -45,10 +46,7 @@ class SearchWidget extends StatelessWidget {
                     },
                     child: Container(
                       decoration: BoxDecoration(
-                        color: Theme.of(context)
-                            .colorScheme
-                            .primary
-                            .withOpacity(0.1),
+                        color: context.colorScheme.primary.withOpacity(0.1),
                         boxShadow: [
                           BoxShadow(
                             color:

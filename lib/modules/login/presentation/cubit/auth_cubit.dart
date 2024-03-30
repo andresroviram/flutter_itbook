@@ -2,26 +2,34 @@ import 'package:bloc/bloc.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
-import '../../../config/database/database_manager.dart';
-import '../../../core/services/local_storage.dart';
-import '../../home/data/models/user.dart';
+import '../../../../core/services/local_storage.dart';
+import '../../data/models/models.dart';
+import '../../domain/entities/entities.dart';
+import '../../domain/usecases/login_usecases.dart';
 
 part 'auth_state.dart';
 part 'auth_cubit.freezed.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  late final DatabaseManager _localDatabase;
   final LocalStorage _localStorage;
+  final LoginUseCase _loginUseCase;
 
   AuthCubit({
-    required DatabaseManager localDatabase,
     required LocalStorage localStorage,
+    required LoginUseCase loginUseCase,
   })  : _localStorage = localStorage,
-        _localDatabase = localDatabase,
+        _loginUseCase = loginUseCase,
         super(const _Initial());
 
   void invalidate() {
     emit(state.copyWith(error: false));
+  }
+
+  bool validate(String username, String password) {
+    if (username.isNotEmpty && password.isNotEmpty) {
+      return true;
+    }
+    return false;
   }
 
   Future<String> getUserName() async {
@@ -39,17 +47,16 @@ class AuthCubit extends Cubit<AuthState> {
         message: 'get_into'.tr(),
       ));
     } else {
-      List<User>? users = await _localDatabase.state?.userDao.readAll();
-      final user = users?.firstWhere((element) => element.name == username,
-          orElse: () => User(name: '', password: ''));
+      UserEntity? user = await _loginUseCase.findUserByName(username);
       if ((user?.name.isNotEmpty ?? false) &&
           (user?.password.isNotEmpty ?? false)) {
         emit(state.copyWith(error: true, message: 'existing_user'.tr()));
         return;
       } else {
-        User user = User(name: username, password: password);
-        final id = await _localDatabase.state?.userDao.insertUser(user);
-        user = User(name: username, password: password, id: id);
+        UserModel user = UserModel(name: username, password: password);
+        final id = await _loginUseCase.insertUser(user);
+        user =
+            UserEntity(name: username, password: password, id: id) as UserModel;
         emit(state.copyWith(error: true, message: 'create_user'.tr()));
       }
     }
@@ -63,13 +70,13 @@ class AuthCubit extends Cubit<AuthState> {
       ));
       return;
     }
-    List<User>? users = await _localDatabase.state?.userDao.readAll();
-    final user = users?.firstWhere((element) => element.name == username,
-        orElse: () => User(name: '', password: ''));
+    UserEntity? user = await _loginUseCase.findUserByName(username);
+
     if ((user?.name.isEmpty ?? false) && (user?.password.isEmpty ?? false)) {
       emit(state.copyWith(error: true, message: 'not_found_user'.tr()));
       return;
     }
+
     if (user?.password == password) {
       _localStorage.saveUserLoginUserName(username);
       _localStorage.saveUserLoginPass(password);
@@ -77,12 +84,5 @@ class AuthCubit extends Cubit<AuthState> {
     } else {
       emit(state.copyWith(error: true, message: 'invalid_credentials'.tr()));
     }
-  }
-
-  bool validate(String username, String password) {
-    if (username.isNotEmpty && password.isNotEmpty) {
-      return true;
-    }
-    return false;
   }
 }

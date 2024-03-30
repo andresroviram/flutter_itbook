@@ -85,7 +85,7 @@ class _$DatabaseHelper extends DatabaseHelper {
       },
       onCreate: (database, version) async {
         await database.execute(
-            'CREATE TABLE IF NOT EXISTS `User` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL, `password` TEXT NOT NULL)');
+            'CREATE TABLE IF NOT EXISTS `User` (`id` INTEGER, `name` TEXT NOT NULL, `password` TEXT NOT NULL, PRIMARY KEY (`id`))');
 
         await callback?.onCreate?.call(database, version);
       },
@@ -103,33 +103,36 @@ class _$UserDao extends UserDao {
   _$UserDao(
     this.database,
     this.changeListener,
-  )   : _queryAdapter = QueryAdapter(database),
-        _userInsertionAdapter = InsertionAdapter(
+  )   : _queryAdapter = QueryAdapter(database, changeListener),
+        _userModelInsertionAdapter = InsertionAdapter(
             database,
             'User',
-            (User item) => <String, Object?>{
+            (UserModel item) => <String, Object?>{
                   'id': item.id,
                   'name': item.name,
                   'password': item.password
-                }),
-        _userUpdateAdapter = UpdateAdapter(
-            database,
-            'User',
-            ['id'],
-            (User item) => <String, Object?>{
-                  'id': item.id,
-                  'name': item.name,
-                  'password': item.password
-                }),
-        _userDeletionAdapter = DeletionAdapter(
+                },
+            changeListener),
+        _userModelUpdateAdapter = UpdateAdapter(
             database,
             'User',
             ['id'],
-            (User item) => <String, Object?>{
+            (UserModel item) => <String, Object?>{
                   'id': item.id,
                   'name': item.name,
                   'password': item.password
-                });
+                },
+            changeListener),
+        _userModelDeletionAdapter = DeletionAdapter(
+            database,
+            'User',
+            ['id'],
+            (UserModel item) => <String, Object?>{
+                  'id': item.id,
+                  'name': item.name,
+                  'password': item.password
+                },
+            changeListener);
 
   final sqflite.DatabaseExecutor database;
 
@@ -137,34 +140,56 @@ class _$UserDao extends UserDao {
 
   final QueryAdapter _queryAdapter;
 
-  final InsertionAdapter<User> _userInsertionAdapter;
+  final InsertionAdapter<UserModel> _userModelInsertionAdapter;
 
-  final UpdateAdapter<User> _userUpdateAdapter;
+  final UpdateAdapter<UserModel> _userModelUpdateAdapter;
 
-  final DeletionAdapter<User> _userDeletionAdapter;
+  final DeletionAdapter<UserModel> _userModelDeletionAdapter;
 
   @override
-  Future<List<User>> readAll() async {
+  Future<List<UserModel>> readAll() async {
     return _queryAdapter.queryList('SELECT * FROM User',
-        mapper: (Map<String, Object?> row) => User(
+        mapper: (Map<String, Object?> row) => UserModel(
             id: row['id'] as int?,
             name: row['name'] as String,
             password: row['password'] as String));
   }
 
   @override
-  Future<int> insertUser(User user) {
-    return _userInsertionAdapter.insertAndReturnId(
+  Stream<UserModel?> findUserById(int id) {
+    return _queryAdapter.queryStream('SELECT * FROM User WHERE id = ?1',
+        mapper: (Map<String, Object?> row) => UserModel(
+            id: row['id'] as int?,
+            name: row['name'] as String,
+            password: row['password'] as String),
+        arguments: [id],
+        queryableName: 'User',
+        isView: false);
+  }
+
+  @override
+  Future<UserModel?> findUserByName(String name) async {
+    return _queryAdapter.query('SELECT * FROM User WHERE name = ?1',
+        mapper: (Map<String, Object?> row) => UserModel(
+            id: row['id'] as int?,
+            name: row['name'] as String,
+            password: row['password'] as String),
+        arguments: [name]);
+  }
+
+  @override
+  Future<int> insertUser(UserModel user) {
+    return _userModelInsertionAdapter.insertAndReturnId(
         user, OnConflictStrategy.abort);
   }
 
   @override
-  Future<void> updateUser(User user) async {
-    await _userUpdateAdapter.update(user, OnConflictStrategy.abort);
+  Future<void> updateUser(UserModel user) async {
+    await _userModelUpdateAdapter.update(user, OnConflictStrategy.abort);
   }
 
   @override
-  Future<void> deleteUser(User user) async {
-    await _userDeletionAdapter.delete(user);
+  Future<void> deleteUser(UserModel user) async {
+    await _userModelDeletionAdapter.delete(user);
   }
 }

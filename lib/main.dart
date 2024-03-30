@@ -35,7 +35,7 @@ void main() async {
       };
 
       setPathUrlStrategy();
-      configureDependencies();
+      await configureDependencies();
       runApp(const ProvidersBloc());
     },
     kIsWeb

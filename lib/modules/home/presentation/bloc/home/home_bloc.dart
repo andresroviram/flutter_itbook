@@ -95,7 +95,6 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
           books: books,
           isLoading: false,
           isDone: false,
-          searchBooks: [],
         ));
     }
   }

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inlaze/core/utils/extension/extension.dart';
 
 import '../../../../../core/utils/helpers.dart';
 import '../../../domain/usecases/home_usecases.dart';
@@ -51,11 +52,14 @@ class DetailView extends StatelessWidget {
                   height: 50,
                   width: 50,
                   decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: Theme.of(context).colorScheme.primary),
+                    shape: BoxShape.circle,
+                    color: context.colorScheme.primary,
+                  ),
                   alignment: Alignment.center,
-                  child: Icon(Icons.chevron_left,
-                      color: Theme.of(context).cardColor),
+                  child: Icon(
+                    Icons.chevron_left,
+                    color: Theme.of(context).cardColor,
+                  ),
                 ),
                 onPressed: () {
                   context.read<RouterManager>().pop();
@@ -124,9 +128,8 @@ class DetailView extends StatelessWidget {
                                               '${state.book.title}',
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
-                                                color: Theme.of(context)
-                                                    .colorScheme
-                                                    .primary,
+                                                color:
+                                                    context.colorScheme.primary,
                                                 fontWeight: FontWeight.bold,
                                                 fontSize: 20,
                                               ),

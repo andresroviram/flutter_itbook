@@ -41,7 +41,6 @@ class _ScaffoldWithNavigationRail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
     return Scaffold(
       appBar: NavigationAppBar(scaffoldDrawerKey: scaffoldDrawerKey),
       key: scaffoldDrawerKey,
@@ -54,8 +53,8 @@ class _ScaffoldWithNavigationRail extends StatelessWidget {
               child: Center(
                 child: Text(
                   MyApp.title,
-                  style: theme.textTheme.bodyMedium!
-                      .copyWith(fontWeight: FontWeight.w600),
+                  style: theme.textTheme.bodyMedium
+                      ?.copyWith(fontWeight: FontWeight.w600),
                 ),
               ),
             ),
@@ -93,7 +92,7 @@ class _ScaffoldWithNavigationRail extends StatelessWidget {
           VerticalDivider(
             thickness: 1,
             width: 1,
-            color: colorScheme.primary.withOpacity(0.2),
+            color: theme.colorScheme.primary.withOpacity(0.2),
           ),
           Expanded(child: navigationShell),
         ],

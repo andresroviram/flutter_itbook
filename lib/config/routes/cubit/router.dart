@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 import '../../../modules/favorite/routes.dart';
 import '../../../modules/home/routes.dart';
 import '../../../modules/home/presentation/view/detail/detail_view.dart';
-import '../../../modules/login/login.dart';
+import '../../../modules/login/presentation/login.dart';
 import '../../../modules/setting/routes.dart';
 import '../scaffold_with_navigation.dart';
 
