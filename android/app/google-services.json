@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "918954290804",
+    "project_id": "itbook-bd53a",
+    "storage_bucket": "itbook-bd53a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918954290804:android:1328dcba117698591e6b21",
+        "android_client_info": {
+          "package_name": "com.prueba.app.inlaze"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAKUWeDkajmV7zDcNr7Ie-9_8xckXQz9ds"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

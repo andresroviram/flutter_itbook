@@ -76,9 +76,11 @@ dependencies:
   envied: ^0.5.3
   recase: ^4.1.0
   shimmer: ^3.0.0
+  timezone: ^0.9.3
 
   url_strategy: ^0.2.0
   firebase_crashlytics: ^3.5.6
+  firebase_core: ^2.31.1
   injectable: ^2.4.2
   sqflite: ^2.3.3+1
   floor: ^1.5.0

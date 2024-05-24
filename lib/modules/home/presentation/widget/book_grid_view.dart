@@ -71,92 +71,94 @@ class BookGridView extends StatelessWidget {
                 ],
                 borderRadius: BorderRadius.circular(20),
               ),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        'ID: ${book.isbn13 ?? ''}',
-                        textAlign: TextAlign.left,
-                        softWrap: true,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w500,
+              child: Expanded(
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'ID: ${book.isbn13 ?? ''}',
+                          textAlign: TextAlign.left,
+                          softWrap: true,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 10,
-                      vertical: 20,
+                      ],
                     ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                      child: Hero(
-                        tag: '$heroTag${book.isbn13}',
-                        child: book.isNull
-                            ? const ContainerShimmer(
-                                height: 250,
-                              )
-                            : CachedNetworkImage(
-                                filterQuality: FilterQuality.medium,
-                                fit: BoxFit.cover,
-                                height: 250,
-                                width: double.infinity,
-                                imageUrl: book.image ?? '',
-                                placeholder: (context, url) =>
-                                    const ContainerShimmer(
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 10,
+                        vertical: 20,
+                      ),
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(20),
+                        child: Hero(
+                          tag: '$heroTag${book.isbn13}',
+                          child: book.isNull
+                              ? const ContainerShimmer(
                                   height: 250,
-                                ),
-                                errorWidget: (context, url, error) => Container(
-                                  height: 150,
-                                  color: Colors.grey.withOpacity(0.5),
-                                  child: const Center(
-                                    child: Icon(
-                                      Icons.error,
+                                )
+                              : CachedNetworkImage(
+                                  filterQuality: FilterQuality.medium,
+                                  fit: BoxFit.cover,
+                                  height: 250,
+                                  width: double.infinity,
+                                  imageUrl: book.image ?? '',
+                                  placeholder: (context, url) =>
+                                      const ContainerShimmer(
+                                    height: 250,
+                                  ),
+                                  errorWidget: (context, url, error) => Container(
+                                    height: 150,
+                                    color: Colors.grey.withOpacity(0.5),
+                                    child: const Center(
+                                      child: Icon(
+                                        Icons.error,
+                                      ),
                                     ),
                                   ),
                                 ),
-                              ),
+                        ),
                       ),
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          book.title?.toUpperCase() ?? '',
-                          softWrap: true,
-                          maxLines: 1,
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Expanded(
+                          child: Text(
+                            book.title?.toUpperCase() ?? '',
+                            softWrap: true,
+                            maxLines: 1,
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 20,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 10),
-                  Row(
-                    children: [
-                      Text(
-                        '${'price'.tr()}: ${book.price ?? 0}',
-                        textAlign: TextAlign.right,
-                        softWrap: true,
-                        maxLines: 1,
-                        overflow: TextOverflow.ellipsis,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.w500,
+                      ],
+                    ),
+                    const SizedBox(height: 10),
+                    Row(
+                      children: [
+                        Text(
+                          '${'price'.tr()}: ${book.price ?? 0}',
+                          textAlign: TextAlign.right,
+                          softWrap: true,
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w500,
+                          ),
                         ),
-                      ),
-                    ],
-                  ),
-                ],
+                      ],
+                    ),
+                  ],
+                ),
               ),
             ),
           );
