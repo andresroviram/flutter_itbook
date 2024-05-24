@@ -6,7 +6,7 @@ part 'env.g.dart';
 @injectable
 @Envied(path: '.env', useConstantCase: true)
 final class Env {
-  @EnviedField(varName: 'API_KEY', obfuscate: true)
+  @EnviedField(varName: 'API_KEY', obfuscate: true, defaultValue: '')
   final String? apiKey = _Env.apiKey;
   @EnviedField(varName: 'BASE_URL', obfuscate: true)
   final String baseUrl = _Env.baseUrl;

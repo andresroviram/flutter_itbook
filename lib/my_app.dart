@@ -44,7 +44,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 // Light and dark ColorSchemes made by FlexColorScheme v7.3.1.
 // These ColorScheme objects require Flutter 3.7 or later.
 const ColorScheme flexSchemeLight = ColorScheme(
@@ -65,11 +64,9 @@ const ColorScheme flexSchemeLight = ColorScheme(
   onError: Color(0xffffffff),
   errorContainer: Color(0xfff1d8d8),
   onErrorContainer: Color(0xff141212),
-  background: Color(0xfffdfaf8),
-  onBackground: Color(0xff090909),
   surface: Color(0xfffdfaf8),
   onSurface: Color(0xff090909),
-  surfaceVariant: Color(0xffebe6e2),
+  surfaceContainerHighest: Color(0xffebe6e2),
   onSurfaceVariant: Color(0xff121211),
   outline: Color(0xff7c7c7c),
   outlineVariant: Color(0xffc8c8c8),
@@ -99,11 +96,9 @@ const ColorScheme flexSchemeDark = ColorScheme(
   onError: Color(0xff140c0d),
   errorContainer: Color(0xffb1384e),
   onErrorContainer: Color(0xfffbe8ec),
-  background: Color(0xff1c1814),
-  onBackground: Color(0xffedecec),
   surface: Color(0xff1c1814),
   onSurface: Color(0xffedecec),
-  surfaceVariant: Color(0xff453e36),
+  surfaceContainerHighest: Color(0xff453e36),
   onSurfaceVariant: Color(0xffe1e0df),
   outline: Color(0xff7d7676),
   outlineVariant: Color(0xff2e2c2c),

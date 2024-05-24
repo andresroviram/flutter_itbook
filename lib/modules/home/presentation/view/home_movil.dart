@@ -26,6 +26,7 @@ class HomeMovil extends StatelessWidget {
                 child: SingleChildScrollView(
                   controller: scrollController,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
                       if (state.searchBooks.isNotEmpty) ...[

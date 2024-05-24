@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/home/home_bloc.dart';
-import '../widget/book_list_view.dart';
+import '../widget/book_grid_view.dart';
 import '../widget/search_bar_widget.dart';
 import '../widget/search_widget.dart';
 
@@ -28,6 +28,7 @@ class HomeWeb extends StatelessWidget {
                     return SingleChildScrollView(
                       controller: scrollController,
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
                           if (state.searchBooks.isNotEmpty) ...[
@@ -43,7 +44,10 @@ class HomeWeb extends StatelessWidget {
                               textAlign: TextAlign.left,
                             ),
                           ),
-                          const BookListView(),
+                          const Padding(
+                            padding: EdgeInsets.all(16.0),
+                            child: BookGridView(),
+                          ),
                         ],
                       ),
                     );

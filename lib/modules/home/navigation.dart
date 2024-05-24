@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:inlaze/core/utils/extension/extension.dart';
 
 import '../../config/routes/cubit/router_manager.dart';
+import '../../core/services/analytic.dart';
 
 class HomeNavigation extends Cubit<void> {
   HomeNavigation({required this.navigation}) : super(null);
@@ -27,8 +28,14 @@ class HomeNavigation extends Cubit<void> {
     Map<String, dynamic> params = {
       'isbn13': isbn13,
     };
-    navigation.push('${route.toParamUrl(params)}', extra: {
-      'heroTag': heroTag,
-    });
+    if (isWeb) {
+      navigation.go('${route.toParamUrl(params)}', extra: {
+        'heroTag': heroTag,
+      });
+    } else {
+      navigation.push('${route.toParamUrl(params)}', extra: {
+        'heroTag': heroTag,
+      });
+    }
   }
 }

@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:inlaze/core/services/analytic.dart';
 import 'package:inlaze/core/utils/extension/extension.dart';
 
 import '../../../../../core/utils/helpers.dart';
@@ -20,13 +21,13 @@ class DetailView extends StatelessWidget {
   static const String path = '/book/:isbn13';
   static const String name = 'book';
 
-  static Widget create({required String isbn13, required String heroTag}) =>
+  static Widget create({required String isbn13, String? heroTag}) =>
       BlocProvider(
         lazy: false,
         create: (context) => DetailBloc(
           homeUseCase: getIt<HomeUseCase>(),
         )..add(DetailEvent.detail(isbn13)),
-        child: DetailView(heroTag: heroTag, isbn13: isbn13),
+        child: DetailView(heroTag: heroTag ?? 'book', isbn13: isbn13),
       );
 
   @override
@@ -47,24 +48,26 @@ class DetailView extends StatelessWidget {
               forceMaterialTransparency: true,
               centerTitle: true,
               title: Text('ID: ${state.book.isbn13 ?? '...'}'),
-              leading: IconButton(
-                icon: Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(
-                    shape: BoxShape.circle,
-                    color: context.colorScheme.primary,
-                  ),
-                  alignment: Alignment.center,
-                  child: Icon(
-                    Icons.chevron_left,
-                    color: Theme.of(context).cardColor,
-                  ),
-                ),
-                onPressed: () {
-                  context.read<RouterManager>().pop();
-                },
-              ),
+              automaticallyImplyLeading: false,
+              leading: isWeb
+                  ? null
+                  : IconButton(
+                      icon: Container(
+                        height: 50,
+                        width: 50,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: context.colorScheme.primary,
+                        ),
+                        alignment: Alignment.center,
+                        child: Icon(
+                          Icons.chevron_left,
+                          color: Theme.of(context).cardColor,
+                        ),
+                      ),
+                      onPressed: () =>
+                          context.read<RouterManager>().pop(),
+                    ),
             ),
             body: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),

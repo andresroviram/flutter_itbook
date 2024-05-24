@@ -5,6 +5,6 @@ class SettingWeb extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Text('setting web');
+    return const Center(child: Text('setting web'));
   }
 }

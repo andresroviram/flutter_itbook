@@ -40,6 +40,7 @@ class _ScaffoldWithNavigationRail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final path = GoRouterState.of(context).uri.path;
     final theme = Theme.of(context);
     return Scaffold(
       appBar: NavigationAppBar(scaffoldDrawerKey: scaffoldDrawerKey),
@@ -74,21 +75,22 @@ class _ScaffoldWithNavigationRail extends StatelessWidget {
       ),
       body: Row(
         children: [
-          Column(
-            children: [
-              const SizedBox(height: 15),
-              Expanded(
-                child: _NavigationRail(
-                  navigationShell: navigationShell,
-                  expand: false,
+          if (path == '/')
+            Column(
+              children: [
+                const SizedBox(height: 15),
+                Expanded(
+                  child: _NavigationRail(
+                    navigationShell: navigationShell,
+                    expand: false,
+                  ),
                 ),
-              ),
-              const Padding(
-                padding: EdgeInsets.all(16),
-                child: ThemeModeButton.icon(),
-              ),
-            ],
-          ),
+                const Padding(
+                  padding: EdgeInsets.all(16),
+                  child: ThemeModeButton.icon(),
+                ),
+              ],
+            ),
           VerticalDivider(
             thickness: 1,
             width: 1,

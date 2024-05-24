@@ -8,8 +8,8 @@ class BaseClient {
   static Map<String, String> headers = <String, String>{
     if (getIt<Env>().apiKey?.isNotEmpty ?? false)
       'x-api-key': getIt<Env>().apiKey ?? '',
-    // 'Accept': 'application/json',
-    'Content-type': 'application/json',
+    'Accept': 'application/json',
+    // 'Content-type': 'application/json',
   };
 
   Logger logger = const Logger('BaseClient');
